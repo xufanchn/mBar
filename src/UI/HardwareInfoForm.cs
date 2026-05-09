@@ -105,7 +105,7 @@ namespace mBar.src.UI
             }
         }
 
-        private void HeaderPanel_Paint(object sender, PaintEventArgs e)
+        private void HeaderPanel_Paint(object? sender, PaintEventArgs e)
         {
             var g = e.Graphics;
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;

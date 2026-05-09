@@ -87,7 +87,7 @@ namespace mBar.src.UI.SettingsPage
             }
         }
 
-        protected void EnsureSafeVisibility(LiteCheck chkHideMain, LiteCheck chkHideTray, LiteCheck chkShowTaskbar)
+        protected void EnsureSafeVisibility(LiteCheck? chkHideMain, LiteCheck? chkHideTray, LiteCheck? chkShowTaskbar)
         {
             bool hideMain = chkHideMain != null ? chkHideMain.Checked : Config.HideMainForm;
             bool hideTray = chkHideTray != null ? chkHideTray.Checked : Config.HideTrayIcon;

@@ -18,7 +18,7 @@ namespace mBar.src.UI.Controls
         private Font _boldFont;
 
         // ★★★ 新增：用于手动追踪悬停节点，解决“触角效果没生效”的问题 ★★★
-        private TreeNode _hoverNode;
+        private TreeNode? _hoverNode;
 
         // 布局参数
         public int ColValueWidth { get; set; } = 70;  

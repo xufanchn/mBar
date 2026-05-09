@@ -23,7 +23,7 @@ namespace mBar
             try
             {
                 // [修正] 使用 Process 获取真实路径，解决单文件发布路径为空的问题
-                string exePath = System.Diagnostics.Process.GetCurrentProcess().MainModule?.FileName;
+            string? exePath = System.Diagnostics.Process.GetCurrentProcess().MainModule?.FileName;
 
                 if (string.IsNullOrEmpty(exePath))
                 {
@@ -31,9 +31,9 @@ namespace mBar
                 }
                 else
                 {
-                    string appFolderPath = Path.GetDirectoryName(exePath);
+                    string? appFolderPath = Path.GetDirectoryName(exePath);
 
-                    string sanitizedPath = appFolderPath?.ToLower()
+                    string? sanitizedPath = appFolderPath?.ToLower()
                                                         .Replace('\\', '_')
                                                         .Replace(':', '_')
                                                         .Replace('/', '_')
@@ -45,7 +45,7 @@ namespace mBar
                     if (baseName.Length > 250) 
                     {
                          // 如果路径太长，使用路径的哈希值来保证唯一性且不超长
-                         baseName = $"Global\\mBar_SingleInstance_{sanitizedPath.GetHashCode()}_Mutex";
+                         baseName = $"Global\\mBar_SingleInstance_{sanitizedPath!.GetHashCode()}_Mutex";
                     }
                     
                     mutexName = baseName;
@@ -53,10 +53,10 @@ namespace mBar
 
                 _mutex = new Mutex(true, mutexName, out createNew);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // 记录一下异常（可选），方便调试为什么会创建失败
-                // LogCrash(ex, "Mutex_Creation_Failed"); 
+                // LogCrash(ex, "Mutex_Creation_Failed");
                 
                 // 回退策略
                 mutexName = "Global\\mBar_SingleInstance_Mutex_UniqueKey";

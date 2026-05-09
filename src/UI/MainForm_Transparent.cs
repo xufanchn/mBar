@@ -21,10 +21,9 @@ namespace mBar
         private readonly MainFormBizHelper _bizHelper;
         private readonly int _wmTaskbarCreated;
         private const int WM_DISPLAYCHANGE = 0x007E;
-        private CancellationTokenSource _displayChangeCts;
+        private CancellationTokenSource _displayChangeCts = null!;
 
         private Point _dragOffset;
-        private bool _uiDragging = false;
 
         // 防止 Win11 自动隐藏无边框 + 无任务栏窗口
         protected override CreateParams CreateParams
@@ -175,7 +174,6 @@ namespace mBar
                 if (e.Button == MouseButtons.Left)
                 {
                     _ui?.SetDragging(true);
-                    _uiDragging = true;
                     _bizHelper.IsDragging = true;
                     _dragOffset = e.Location;
                 }
@@ -193,7 +191,6 @@ namespace mBar
                 if (e.Button == MouseButtons.Left)
                 {
                     _ui?.SetDragging(false);
-                    _uiDragging = false;
                     _bizHelper.IsDragging = false;
                     _bizHelper.ClampToScreen(); 
                     _bizHelper.SavePos();

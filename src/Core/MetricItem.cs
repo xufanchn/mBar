@@ -16,7 +16,7 @@ namespace mBar
     public class MetricItem
     {
         // [新增] 绑定原始配置对象，实现动态 Label
-        public MonitorItemConfig BoundConfig { get; set; }
+        public MonitorItemConfig BoundConfig { get; set; } = null!;
 
         private string _key = "";
         

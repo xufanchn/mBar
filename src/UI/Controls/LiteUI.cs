@@ -287,8 +287,8 @@ namespace mBar.src.UI.Controls
     public class LiteUnderlineInput : Panel
     {
         public TextBox Inner;
-        private Label _lblUnit;   // 单位 (右侧)
-        private Label _lblLabel;  // 标签 (左侧)
+        private Label? _lblUnit;   // 单位 (右侧)
+        private Label? _lblLabel;  // 标签 (左侧)
 
         private const int EM_SETCUEBANNER = 0x1501;
         [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto)]
@@ -464,8 +464,8 @@ namespace mBar.src.UI.Controls
     public class LiteNote : Panel { public LiteNote(string text, int indent = 0) { this.Dock = DockStyle.Top; this.Height = UIUtils.S(32); this.Margin = new Padding(0); var lbl = new Label { Text = text, AutoSize = true, Font = new Font("Microsoft YaHei UI", 8F), ForeColor = Color.Gray, Location = new Point(UIUtils.S(indent), UIUtils.S(10)) }; this.Controls.Add(lbl); } }
     public class LiteComboItem 
     { 
-        public string Text { get; set; } 
-        public string Value { get; set; } 
+        public string Text { get; set; } = "";
+        public string Value { get; set; } = ""; 
         public override string ToString() => Text;
     }
 
@@ -514,7 +514,7 @@ namespace mBar.src.UI.Controls
             }; 
         } 
         
-        public object SelectedItem { get => Inner.SelectedItem; set => Inner.SelectedItem = value; } 
+        public object? SelectedItem { get => Inner.SelectedItem; set => Inner.SelectedItem = value; } 
         public int SelectedIndex { get => Inner.SelectedIndex; set => Inner.SelectedIndex = value; } 
         public ComboBox.ObjectCollection Items => Inner.Items; 
         public override string Text { get => Inner.Text; set => Inner.Text = value; } 
@@ -542,7 +542,7 @@ namespace mBar.src.UI.Controls
 
         public string SelectedValue 
         {
-            get => (Inner.SelectedItem as LiteComboItem)?.Value;
+            get => (Inner.SelectedItem as LiteComboItem)?.Value ?? "";
         }
     }
     public class LiteLink : Label

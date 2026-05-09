@@ -22,20 +22,20 @@ namespace mBar.src.Plugins
     /// </summary>
     public class PluginExecutor : IDisposable
     {
-        private HttpClient _http;
+        private HttpClient _http = null!;
         private readonly ConcurrentDictionary<string, Task<string>> _inflightRequests = new();
         private readonly object _httpLock = new object();
         
         // Key = InstanceID_StepID_ParamsHash
         private class CacheItem
         {
-            public string RawResponse { get; set; } 
+            public string RawResponse { get; set; } = ""; 
             public DateTime Timestamp { get; set; }
         }
         
         private readonly ConcurrentDictionary<string, CacheItem> _stepCache = new();
 
-        public event Action OnSchemaChanged;
+        public event Action? OnSchemaChanged;
 
         public PluginExecutor()
         {
@@ -744,7 +744,7 @@ namespace mBar.src.Plugins
 
         private Dictionary<string, string> ResolveHeaders(Dictionary<string, string> headers, Dictionary<string, string> context)
         {
-            if (headers == null || headers.Count == 0) return null;
+            if (headers == null || headers.Count == 0) return new Dictionary<string, string>();
             var resolved = new Dictionary<string, string>();
             foreach (var kv in headers)
             {

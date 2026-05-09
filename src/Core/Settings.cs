@@ -283,8 +283,8 @@ namespace mBar
 
         // ★★★ [新增] 自定义单位配置 ★★★
         // null/"Auto" = 自动(默认), "" = 不显示, "{u}/s" = 自定义格式
-        public string UnitPanel { get; set; } = null;
-        public string UnitTaskbar { get; set; } = null;
+        public string? UnitPanel { get; set; }
+        public string? UnitTaskbar { get; set; }
         public bool VisibleInPanel { get; set; } = true;
         public bool VisibleInTaskbar { get; set; } = false;
 

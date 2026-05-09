@@ -301,7 +301,7 @@ namespace mBar.src.UI.Controls
             // 保存时同样需要对比 Settings 上下文下的默认值 (因为输入框显示的是 Settings 格式)
             var unitCtx = _isTaskbarMode ? MetricUtils.UnitContext.SettingsTaskbar : MetricUtils.UnitContext.SettingsPanel;
             string defUnit = MetricUtils.GetUnitStr(Config.Key, 0, unitCtx);
-            string finalVal;
+            string? finalVal;
 
             if (string.IsNullOrEmpty(rawUnit)) 
             {

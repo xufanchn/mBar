@@ -18,7 +18,7 @@ namespace mBar.src.Plugins
     /// </summary>
     public class PluginManager
     {
-        private static PluginManager _instance;
+        private static PluginManager? _instance;
         public static PluginManager Instance => _instance ??= new PluginManager();
 
         private readonly List<PluginTemplate> _templates = new();

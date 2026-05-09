@@ -236,7 +236,7 @@ namespace mBar.src.UI.Helpers
             // =========================================================================
             try
             {
-                Screen screen = null;
+                Screen? screen = null;
                 if (!string.IsNullOrEmpty(targetDevice)) 
                     screen = Screen.AllScreens.FirstOrDefault(s => s.DeviceName == targetDevice);
                 if (screen == null) 

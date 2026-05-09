@@ -272,7 +272,7 @@ namespace mBar
         }
 
         // 重试点击事件处理
-        private void BtnRetry_Click(object sender, EventArgs e)
+        private void BtnRetry_Click(object? sender, EventArgs e)
         {
             // 批量重置 UI 状态
             Invoke(new Action(() =>
@@ -297,7 +297,7 @@ namespace mBar
         }
 
         // 网卡数据更新逻辑 (保持不变)
-        private void UpdateLocalNetworkData(object sender, EventArgs e)
+        private void UpdateLocalNetworkData(object? sender, EventArgs e)
         {
             try
             {

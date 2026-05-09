@@ -19,7 +19,7 @@ namespace mBar
         private readonly TaskbarWinHelper _winHelper;
         private readonly TaskbarBizHelper _bizHelper;
         
-        private HorizontalLayout _layout;
+        private HorizontalLayout _layout = null!;
         private List<Column>? _cols;
         private ContextMenuStrip? _currentMenu;
         private DateTime _lastFindHandleTime = DateTime.MinValue;

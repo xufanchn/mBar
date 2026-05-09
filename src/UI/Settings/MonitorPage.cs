@@ -415,10 +415,10 @@ namespace mBar.src.UI.SettingsPage
             return block;
         }
 
-        private void GroupHeader_MoveUp(object sender, EventArgs e) { if (sender is MonitorGroupHeader h && h.Tag is GroupBlock b) MoveControl(b, -1); }
-        private void GroupHeader_MoveDown(object sender, EventArgs e) { if (sender is MonitorGroupHeader h && h.Tag is GroupBlock b) MoveControl(b, 1); }
-        private void Row_MoveUp(object sender, EventArgs e) { if (sender is Control r) MoveControl(r, -1); }
-        private void Row_MoveDown(object sender, EventArgs e) { if (sender is Control r) MoveControl(r, 1); }
+        private void GroupHeader_MoveUp(object? sender, EventArgs e) { if (sender is MonitorGroupHeader h && h.Tag is GroupBlock b) MoveControl(b, -1); }
+        private void GroupHeader_MoveDown(object? sender, EventArgs e) { if (sender is MonitorGroupHeader h && h.Tag is GroupBlock b) MoveControl(b, 1); }
+        private void Row_MoveUp(object? sender, EventArgs e) { if (sender is Control r) MoveControl(r, -1); }
+        private void Row_MoveDown(object? sender, EventArgs e) { if (sender is Control r) MoveControl(r, 1); }
         
         private void MoveControl(Control c, int dir)
         {
