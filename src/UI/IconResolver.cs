@@ -37,10 +37,9 @@ namespace mBar
             {
                 using var svg = new SKSvg();
                 svg.Load(path);
-                if (svg.Model == null) return null;
+                if (svg.Picture == null) return null;
 
-                var skColor = new SKColor((uint)color.ToArgb() & 0x00FFFFFF | 0xFF000000);
-                float maxDim = Math.Max(svg.Model.CullRect.Width, svg.Model.CullRect.Height);
+                float maxDim = Math.Max(svg.Picture.CullRect.Width, svg.Picture.CullRect.Height);
                 if (maxDim <= 0) return null;
                 float scale = size / maxDim;
 
@@ -49,13 +48,9 @@ namespace mBar
                 var canvas = surface.Canvas;
                 canvas.Clear(SKColors.Transparent);
                 canvas.Scale(scale);
-                canvas.Translate(-svg.Model.CullRect.Left, -svg.Model.CullRect.Top);
+                canvas.Translate(-svg.Picture.CullRect.Left, -svg.Picture.CullRect.Top);
 
-                using var paint = new SKPaint
-                {
-                    ColorFilter = SKColorFilter.CreateBlendMode(skColor, SKBlendMode.SrcIn)
-                };
-                canvas.DrawPicture(svg.Model, paint);
+                canvas.DrawPicture(svg.Picture);
 
                 using var skImage = surface.Snapshot();
                 using var data = skImage.Encode(SKEncodedImageFormat.Png, 100);
