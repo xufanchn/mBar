@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using LiteMonitor.src.Core;
-using static LiteMonitor.src.UI.Helpers.TaskbarWinHelper;
+using mBar.src.Core;
+using static mBar.src.UI.Helpers.TaskbarWinHelper;
 
-namespace LiteMonitor.src.UI.Helpers
+namespace mBar.src.UI.Helpers
 {
     /// <summary>
     /// 任务栏业务助手 (Business Helper)

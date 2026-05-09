@@ -1,7 +1,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace LiteMonitor
+namespace mBar
 {
     partial class UpdateDialog
     {
@@ -56,7 +56,7 @@ namespace LiteMonitor
             lblVersion.Name = "lblVersion";
             lblVersion.Size = new Size(186, 22);
             lblVersion.TabIndex = 0;
-            lblVersion.Text = "⚡️LiteMonitor_v1.0.6";
+            lblVersion.Text = "⚡️mBar_v1.0.6";
             lblVersion.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // rtbChangelog
@@ -137,7 +137,7 @@ namespace LiteMonitor
             MinimizeBox = false;
             Name = "UpdateDialog";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "⚡️LiteMonitor";
+            Text = "⚡️mBar";
             ResumeLayout(false);
             PerformLayout();
         }

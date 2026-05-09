@@ -1,8 +1,8 @@
 using System.Globalization;
 using System.Reflection; // 用于给 DataGridView 开缓冲
-using LiteMonitor.src.Core;
+using mBar.src.Core;
 
-namespace LiteMonitor
+namespace mBar
 {
     public enum HistoryViewMode { Daily, Weekly, Monthly, Quarterly, Yearly }
 

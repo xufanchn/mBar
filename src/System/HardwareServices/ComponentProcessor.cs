@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using LibreHardwareMonitor.Hardware;
-using LiteMonitor.src.Core;
+using mBar.src.Core;
 
-namespace LiteMonitor.src.SystemServices
+namespace mBar.src.SystemServices
 {
     /// <summary>
     /// 组件处理器：负责 CPU 和 GPU 的复杂数值加工（聚合、修正、过滤）

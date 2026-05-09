@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using LiteMonitor.src.Core;
-using LiteMonitor.src.SystemServices.InfoService;
+using mBar.src.Core;
+using mBar.src.SystemServices.InfoService;
 
-namespace LiteMonitor.src.Plugins
+namespace mBar.src.Plugins
 {
     /// <summary>
     /// 插件监控项同步服务

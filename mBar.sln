@@ -5,7 +5,7 @@ VisualStudioVersion = 18.0.11201.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mBar", "mBar.csproj", "{23AEC60E-F48F-2CE6-4BD3-D37E306CCCF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiteMonitor.Updater", "LiteMonitor.Updater\LiteMonitor.Updater.csproj", "{3A8B5F59-3708-4B2C-A20D-CA4DA179D1D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mBar.Updater", "mBar.Updater\mBar.Updater.csproj", "{3A8B5F59-3708-4B2C-A20D-CA4DA179D1D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -9,12 +9,12 @@ using System.Net.Security;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using LiteMonitor;
-using LiteMonitor.src.SystemServices.InfoService;
-using LiteMonitor.src.Plugins.Native;
-using LiteMonitor.src.Core;
+using mBar;
+using mBar.src.SystemServices.InfoService;
+using mBar.src.Plugins.Native;
+using mBar.src.Core;
 
-namespace LiteMonitor.src.Plugins
+namespace mBar.src.Plugins
 {
     /// <summary>
     /// 插件执行引擎 (Refactored)
@@ -63,7 +63,7 @@ namespace LiteMonitor.src.Plugins
                     MaxConnectionsPerServer = 20
                 });
                 _http.Timeout = TimeSpan.FromSeconds(10); 
-                _http.DefaultRequestHeaders.Add("User-Agent", "LiteMonitor/1.0");
+                _http.DefaultRequestHeaders.Add("User-Agent", "mBar/1.0");
             }
         }
 
@@ -447,7 +447,7 @@ namespace LiteMonitor.src.Plugins
                 
                 var client = new HttpClient(handler);
                 client.Timeout = TimeSpan.FromSeconds(10);
-                client.DefaultRequestHeaders.Add("User-Agent", "LiteMonitor/1.0");
+                client.DefaultRequestHeaders.Add("User-Agent", "mBar/1.0");
                 return client;
             });
         }

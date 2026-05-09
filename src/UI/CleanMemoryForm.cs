@@ -3,10 +3,10 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LiteMonitor.src.Core;
-using LiteMonitor.src.SystemServices;
+using mBar.src.Core;
+using mBar.src.SystemServices;
 
-namespace LiteMonitor.src.UI
+namespace mBar.src.UI
 {
     public class CleanMemoryForm : Form
     {

@@ -5,7 +5,7 @@ using System.Collections.Concurrent;
 using System.Drawing;
 using System.IO;
 
-namespace LiteMonitor
+namespace mBar
 {
     public static class IconResolver
     {

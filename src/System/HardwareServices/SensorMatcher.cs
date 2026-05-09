@@ -1,7 +1,7 @@
 using System;
 using LibreHardwareMonitor.Hardware;
 
-namespace LiteMonitor.src.SystemServices
+namespace mBar.src.SystemServices
 {
     /// <summary>
     /// 传感器匹配器 (原 SensorMap.NormalizeKey)

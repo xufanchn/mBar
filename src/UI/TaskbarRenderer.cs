@@ -1,7 +1,7 @@
-using LiteMonitor.src.Core;
+using mBar.src.Core;
 using System.Drawing.Text;
 
-namespace LiteMonitor
+namespace mBar
 {
     /// <summary>
     /// 任务栏渲染器（仅负责绘制，不再负责布局）

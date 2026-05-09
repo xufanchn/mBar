@@ -5,11 +5,11 @@ using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using LiteMonitor.src.Core;
-using LiteMonitor.src.SystemServices;
-using LiteMonitor.src.UI.Controls;
+using mBar.src.Core;
+using mBar.src.SystemServices;
+using mBar.src.UI.Controls;
 
-namespace LiteMonitor.src.UI.SettingsPage
+namespace mBar.src.UI.SettingsPage
 {
     public class SystemHardwarPage : SettingsPageBase
     {

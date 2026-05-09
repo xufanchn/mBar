@@ -5,10 +5,10 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using LibreHardwareMonitor.Hardware;
-using LiteMonitor.src.Core;
+using mBar.src.Core;
 using Debug = System.Diagnostics.Debug;
 
-namespace LiteMonitor.src.SystemServices
+namespace mBar.src.SystemServices
 {
     public class NetworkManager
     {

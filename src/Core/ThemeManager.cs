@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace LiteMonitor.src.Core
+namespace mBar.src.Core
 {
     /// <summary>
     /// 布局配置：仅保留当前代码实际用到的字段

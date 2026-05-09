@@ -2,13 +2,13 @@ using System;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LiteMonitor.src.SystemServices;
-using LiteMonitor.src.Core;
+using mBar.src.SystemServices;
+using mBar.src.Core;
 using System.Diagnostics;
 using System.Collections.Generic; // 用于 MakeMovable
 using System.Runtime.InteropServices; // 用于 DPI 适配
 
-namespace LiteMonitor
+namespace mBar
 {
     // 自定义进度条控件，支持自定义颜色
     public class CustomProgressBar : ProgressBar

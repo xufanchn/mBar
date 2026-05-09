@@ -4,9 +4,9 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
-using LiteMonitor.src.Core;
+using mBar.src.Core;
 
-namespace LiteMonitor
+namespace mBar
 {
     public static class SettingsHelper
     {

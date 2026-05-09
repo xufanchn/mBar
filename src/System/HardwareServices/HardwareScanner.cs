@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using LibreHardwareMonitor.Hardware;
 
-namespace LiteMonitor.src.SystemServices
+namespace mBar.src.SystemServices
 {
     /// <summary>
     /// 硬件扫描器：负责硬件的发现、列举和命名逻辑 (主要服务于 UI 设置)

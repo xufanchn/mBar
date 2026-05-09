@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Windows.Forms;
 using System.Net.Security;
-using LiteMonitor.src.Core;
+using mBar.src.Core;
 
 using System.IO;
 using System.IO.Compression;
 
-namespace LiteMonitor
+namespace mBar
 {
     /// <summary>
-    /// LiteMonitor 自动更新模块（最终完整版）
+    /// mBar 自动更新模块（最终完整版）
     /// - version.json 支持国内 / GitHub 两源自动 fallback
     /// - ZIP 下载支持两源测速自动选择最快
     /// - ZIP 下载完成后，主程序抢先更新 Updater.exe，防止自更新死锁
@@ -43,13 +43,13 @@ namespace LiteMonitor
         private static readonly string[] VersionJsonUrls =
         {
              // 国官网源
-            "https://litemonitor.cn/update/version.json",
+            "https://github.com/xufanchn/mBar/releases/version.json",
             
             // Gitee RAW（自动 fallback 使用）
-             "https://gitee.com/Diorser/LiteMonitor/raw/master/resources/version.json",
+             "https:///raw/master/resources/version.json",
 
             // GitHub RAW（自动 fallback 使用）
-             "https://raw.githubusercontent.com/Diorser/LiteMonitor/master/resources/version.json",
+             "https://raw.githubusercontent.com/xufanchn/mBar/master/resources/version.json",
              
         };
 
@@ -60,11 +60,11 @@ namespace LiteMonitor
         {
             
             // Gitee Releases
-            "https://gitee.com/Diorser/LiteMonitor/releases/download/v{0}/LiteMonitor_v{0}-win-x64.zip",
+            "https://github.com/xufanchn/mBar/releases/download/v{0}/mBar_v{0}-win-x64.zip",
             // 国内 CDN
-            "https://litemonitor.cn/update/LiteMonitor_v{0}-win-x64.zip",
+            "https://github.com/xufanchn/mBar/releases/mBar_v{0}-win-x64.zip",
             // Github Releases
-            "https://github.com/Diorser/LiteMonitor/releases/download/v{0}/LiteMonitor_v{0}-win-x64.zip",
+            "https://github.com/xufanchn/mBar/releases/download/v{0}/mBar_v{0}-win-x64.zip",
 
             
         };
@@ -136,8 +136,8 @@ namespace LiteMonitor
                     var context = new DownloadContext
                     {
                         Title = isZh ? "发现新版本！" : "New Version!",
-                        VersionLabel = $"⚡️LiteMonitor_v{latest}",
-                        Description = $"更新日志：\n{changelog} \n更新日期：\n{releaseDate}\n\n官网：https://litemonitor.cn \nGitHub：https://github.com/Diorser/LiteMonitor",
+                        VersionLabel = $"⚡️mBar_v{latest}",
+                        Description = $"更新日志：\n{changelog} \n更新日期：\n{releaseDate}\n\n官网：https:// \nGitHub：https://github.com/xufanchn/mBar",
                         Urls = sortedUrls.ToArray(),
                         SavePath = Path.Combine(AppContext.BaseDirectory, "resources", "update.zip"),
                         ActionButtonText = "Update",
@@ -353,7 +353,7 @@ namespace LiteMonitor
 
                 // 2. 杀掉所有残留的 Updater 进程 (防止占用)
                 // 涵盖新旧两个名字
-                string[] updaterNames = { "Updater", "LiteMonitor.Updater" };
+                string[] updaterNames = { "Updater", "mBar.Updater" };
                 foreach (var name in updaterNames)
                 {
                     foreach (var p in Process.GetProcessesByName(name))
@@ -379,7 +379,7 @@ namespace LiteMonitor
                 {
                     // 优先找新版
                     var entry = archive.Entries.FirstOrDefault(e => 
-                        e.FullName.EndsWith("LiteMonitor.Updater.exe", StringComparison.OrdinalIgnoreCase));
+                        e.FullName.EndsWith("mBar.Updater.exe", StringComparison.OrdinalIgnoreCase));
                     
                     // 没找到则找旧版
                     if (entry == null)

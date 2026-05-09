@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using LiteMonitor.src.Core;
-using LiteMonitor.src.UI.Controls;
+using mBar.src.Core;
+using mBar.src.UI.Controls;
 
-namespace LiteMonitor.src.UI.SettingsPage
+namespace mBar.src.UI.SettingsPage
 {
     /// <summary>
     /// UI Builder Extension Methods

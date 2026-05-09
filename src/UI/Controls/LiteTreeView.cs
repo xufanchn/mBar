@@ -3,9 +3,9 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using LibreHardwareMonitor.Hardware;
-using LiteMonitor.src.Core;
+using mBar.src.Core;
 
-namespace LiteMonitor.src.UI.Controls
+namespace mBar.src.UI.Controls
 {
     public class LiteTreeView : TreeView
     {

@@ -4,12 +4,12 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Text.Json; // [Fix] Added missing using
 using System.Buffers; // [Optimization] Use ArrayPool
-using LiteMonitor.src.Core;
-using LiteMonitor.src.SystemServices;
-using LiteMonitor.src.SystemServices.InfoService;
+using mBar.src.Core;
+using mBar.src.SystemServices;
+using mBar.src.SystemServices.InfoService;
 using System.Diagnostics;
 
-namespace LiteMonitor.src.WebServer
+namespace mBar.src.WebServer
 {
     public class LiteWebServer : IDisposable
     {

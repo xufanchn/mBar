@@ -1,10 +1,10 @@
 using System;
 using System.Drawing;
 using System.Linq; // 需要 Linq 来查询 Config
-using LiteMonitor.src.Core;
-using LiteMonitor.src.SystemServices.InfoService; // [New] For Plugin Color Override
+using mBar.src.Core;
+using mBar.src.SystemServices.InfoService; // [New] For Plugin Color Override
 
-namespace LiteMonitor
+namespace mBar
 {
     public enum MetricRenderStyle
     {

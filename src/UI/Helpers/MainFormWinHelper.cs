@@ -4,9 +4,9 @@ using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LiteMonitor.src.Core;
+using mBar.src.Core;
 
-namespace LiteMonitor.src.UI.Helpers
+namespace mBar.src.UI.Helpers
 {
     /// <summary>
     /// 主窗口底层助手 (Windows Helper)

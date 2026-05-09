@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
-using LiteMonitor.src.Core;
+using mBar.src.Core;
 
-namespace LiteMonitor.ThemeEditor
+namespace mBar.ThemeEditor
 {
     /// <summary>
     /// 管理主题文件：加载、保存、新建、复制、重命名、删除

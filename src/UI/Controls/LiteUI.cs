@@ -1,10 +1,10 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using LiteMonitor.src.Core; // 确保引用了 UIUtils
-using LiteMonitor.src.UI.SettingsPage;
+using mBar.src.Core; // 确保引用了 UIUtils
+using mBar.src.UI.SettingsPage;
 
-namespace LiteMonitor.src.UI.Controls
+namespace mBar.src.UI.Controls
 {
     public static class UIColors
     {

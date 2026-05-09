@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Principal;
 using System.Net.Security; // For SslClientAuthenticationOptions
-using LiteMonitor.src.Core; // 修复: 引用 Settings 类
+using mBar.src.Core; // 修复: 引用 Settings 类
 
-namespace LiteMonitor
+namespace mBar
 {
     public class DownloadContext
     {
@@ -48,7 +48,7 @@ namespace LiteMonitor
             _sortedUrls = new List<string>(_context.Urls);
 
             // 初始化 UI
-            this.Text = IsChinese ? $"⚡️LiteMonitor - {_context.Title}" : $"⚡️LiteMonitor - {_context.Title}";
+            this.Text = IsChinese ? $"⚡️mBar - {_context.Title}" : $"⚡️mBar - {_context.Title}";
             lblVersion.Text = _context.VersionLabel;
             
             // 富文本设置 (必须在设置文本之前/之间正确处理)
@@ -230,7 +230,7 @@ namespace LiteMonitor
                         { 
                             Timeout = TimeSpan.FromMinutes(10) 
                         };
-                        http.DefaultRequestHeaders.UserAgent.ParseAdd("LiteMonitor-Updater/1.0");
+                        http.DefaultRequestHeaders.UserAgent.ParseAdd("mBar-Updater/1.0");
 
                         // 5. 发起请求
                         using var resp = await http.GetAsync(url, HttpCompletionOption.ResponseHeadersRead, _cts.Token);
@@ -378,7 +378,7 @@ namespace LiteMonitor
             else
             {
                 // B. 预更新失败 (ZIP异常?)，尝试回退到现有文件
-                string newUpdater = Path.Combine(resourcesDir, "LiteMonitor.Updater.exe");
+                string newUpdater = Path.Combine(resourcesDir, "mBar.Updater.exe");
                 string oldUpdater = Path.Combine(resourcesDir, "Updater.exe");
 
                 if (File.Exists(newUpdater)) updater = newUpdater;

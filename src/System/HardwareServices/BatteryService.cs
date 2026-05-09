@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using LibreHardwareMonitor.Hardware;
-using LiteMonitor.src.Core;
+using mBar.src.Core;
 
-namespace LiteMonitor.src.SystemServices
+namespace mBar.src.SystemServices
 {
     /// <summary>
     /// 电池服务：专门处理电池状态识别、数值计算及模拟测试逻辑

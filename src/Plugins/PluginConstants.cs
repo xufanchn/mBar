@@ -1,4 +1,4 @@
-namespace LiteMonitor.src.Plugins
+namespace mBar.src.Plugins
 {
     /// <summary>
     /// 插件系统常量定义

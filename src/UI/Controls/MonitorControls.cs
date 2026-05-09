@@ -1,10 +1,10 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using LiteMonitor.src.Core;
-using LiteMonitor.src.SystemServices.InfoService; // [New]
+using mBar.src.Core;
+using mBar.src.SystemServices.InfoService; // [New]
 
-namespace LiteMonitor.src.UI.Controls
+namespace mBar.src.UI.Controls
 {
     public static class MonitorLayout
     {

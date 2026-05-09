@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Collections.Concurrent;
 using System.Drawing;
 using System.Text.Json.Serialization;
-using LiteMonitor.src.Core;
-using LiteMonitor.src.Plugins;
-namespace LiteMonitor
+using mBar.src.Core;
+using mBar.src.Plugins;
+namespace mBar
 {
     public class Settings
     {

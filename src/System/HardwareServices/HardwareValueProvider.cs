@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using LibreHardwareMonitor.Hardware;
-using LiteMonitor.src.Core;
+using mBar.src.Core;
 using Debug = System.Diagnostics.Debug;
 
-namespace LiteMonitor.src.SystemServices
+namespace mBar.src.SystemServices
 {
     public class HardwareValueProvider : IDisposable
     {

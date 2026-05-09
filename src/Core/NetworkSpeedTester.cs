@@ -8,7 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Net.Security; // ★★★ 新增：解决 SslClientAuthenticationOptions 引用 ★★★
 
-namespace LiteMonitor
+namespace mBar
 {
     public static class NetworkSpeedTester
     {

@@ -1,9 +1,9 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using static LiteMonitor.src.UI.Helpers.NativeMethods;
+using static mBar.src.UI.Helpers.NativeMethods;
 
-namespace LiteMonitor.src.UI.Helpers
+namespace mBar.src.UI.Helpers
 {
     /// <summary>
     /// Win10 任务栏策略

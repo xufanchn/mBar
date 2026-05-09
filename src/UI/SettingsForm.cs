@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using LiteMonitor.src.Core;
-using LiteMonitor.src.Core.Actions;
-using LiteMonitor.src.UI.Controls;
-using LiteMonitor.src.UI.SettingsPage;
+using mBar.src.Core;
+using mBar.src.Core.Actions;
+using mBar.src.UI.Controls;
+using mBar.src.UI.SettingsPage;
 
-namespace LiteMonitor.src.UI
+namespace mBar.src.UI
 {
     public class SettingsForm : Form
     {
@@ -232,7 +232,7 @@ namespace LiteMonitor.src.UI
             {
                 // 自动纠正：如果所有可交互入口都被封死（隐藏或穿透+隐藏托盘），强制显示托盘
                 _draftCfg.HideTrayIcon = false;
-                MessageBox.Show("为了防止所有可交互入口都被死锁（隐藏或穿透+隐藏托盘），已强制显示托盘图标。", "LiteMonitor", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("为了防止所有可交互入口都被死锁（隐藏或穿透+隐藏托盘），已强制显示托盘图标。", "mBar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             // 2. 合并变更到 Live Settings

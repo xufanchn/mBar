@@ -1,8 +1,8 @@
 using System.Linq;
-using LiteMonitor.src.Core;
+using mBar.src.Core;
 using System.Reflection;
 using System.Collections.Generic;
-namespace LiteMonitor.src.Core.Actions
+namespace mBar.src.Core.Actions
 {
     /// <summary>
     /// 封装所有修改 Settings 对象的逻辑。

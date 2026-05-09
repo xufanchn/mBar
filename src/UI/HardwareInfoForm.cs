@@ -3,12 +3,12 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using LibreHardwareMonitor.Hardware;
-using LiteMonitor;
-using LiteMonitor.src.SystemServices;
-using LiteMonitor.src.Core;
-using LiteMonitor.src.UI.Controls;
+using mBar;
+using mBar.src.SystemServices;
+using mBar.src.Core;
+using mBar.src.UI.Controls;
 
-namespace LiteMonitor.src.UI
+namespace mBar.src.UI
 {
     public class HardwareInfoForm : Form
     {
@@ -23,7 +23,7 @@ namespace LiteMonitor.src.UI
 
         public HardwareInfoForm()
         {
-            this.Text = T("LiteMonitor - Hardware Info", "LiteMonitor - 系统硬件详情");
+            this.Text = T("mBar - Hardware Info", "mBar - 系统硬件详情");
             this.Size = new Size(UIUtils.S(600), UIUtils.S(750)); // 稍微加宽一点
             this.StartPosition = FormStartPosition.CenterScreen;
             this.BackColor = Color.White;

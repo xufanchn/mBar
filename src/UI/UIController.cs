@@ -1,13 +1,13 @@
-using LiteMonitor.src.Core;
-using LiteMonitor.src.SystemServices.InfoService;
-using LiteMonitor.src.SystemServices;
+using mBar.src.Core;
+using mBar.src.SystemServices.InfoService;
+using mBar.src.SystemServices;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace LiteMonitor
+namespace mBar
 {
     public class UIController : IDisposable
     {

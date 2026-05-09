@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using LiteMonitor.src.Core;
-using LiteMonitor.src.Core.Actions;
-using LiteMonitor.src.UI.Helpers;
+using mBar.src.Core;
+using mBar.src.Core.Actions;
+using mBar.src.UI.Helpers;
 
-namespace LiteMonitor.src.UI.Helpers
+namespace mBar.src.UI.Helpers
 {
     /// <summary>
     /// 菜单监控项生成助手
@@ -25,7 +25,7 @@ namespace LiteMonitor.src.UI.Helpers
             {
                 try
                 {
-                    using (var f = new LiteMonitor.src.UI.SettingsForm(cfg, ui, form))
+                    using (var f = new mBar.src.UI.SettingsForm(cfg, ui, form))
                     {
                         f.SwitchPage("Plugins"); 
                         f.ShowDialog(form);
@@ -51,11 +51,11 @@ namespace LiteMonitor.src.UI.Helpers
                 cfg.MaxLimitTipShown = true;
                 cfg.Save();
 
-                if (MessageBox.Show(msg, "LiteMonitor Setup", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(msg, "mBar Setup", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     try
                     {
-                        using (var f = new LiteMonitor.src.UI.SettingsForm(cfg, ui, form))
+                        using (var f = new mBar.src.UI.SettingsForm(cfg, ui, form))
                         {
                             f.SwitchPage("System"); // 跳转到可以设置最大值的页面
                             f.ShowDialog(form);

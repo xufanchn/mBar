@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using LibreHardwareMonitor.Hardware;
-using LiteMonitor.src.Core;
+using mBar.src.Core;
 
-namespace LiteMonitor.src.SystemServices
+namespace mBar.src.SystemServices
 {
     public class DiskManager
     {

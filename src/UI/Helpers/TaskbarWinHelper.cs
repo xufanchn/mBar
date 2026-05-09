@@ -5,10 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using LiteMonitor.src.Core;
-using static LiteMonitor.src.UI.Helpers.NativeMethods;
+using mBar.src.Core;
+using static mBar.src.UI.Helpers.NativeMethods;
 
-namespace LiteMonitor.src.UI.Helpers
+namespace mBar.src.UI.Helpers
 {
     /// <summary>
     /// 任务栏集成策略接口

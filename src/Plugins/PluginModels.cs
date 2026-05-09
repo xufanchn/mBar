@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace LiteMonitor.src.Plugins
+namespace mBar.src.Plugins
 {
     // ==========================================
     // 1. 模版定义 (对应 JSON 文件)

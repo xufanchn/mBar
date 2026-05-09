@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using LibreHardwareMonitor.Hardware;
-using LiteMonitor.src.Core;
+using mBar.src.Core;
 
-namespace LiteMonitor.src.SystemServices
+namespace mBar.src.SystemServices
 {
     /// <summary>
     /// 专用服务：负责智能识别和映射风扇/水泵/机箱风扇

@@ -45,19 +45,19 @@
         </Content>
     </ItemGroup>
 	<ItemGroup>
-		<Content Include="resources\LiteMonitor.Updater.exe">
+		<Content Include="resources\mBar.Updater.exe">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
 	
 	
 <ItemGroup>
-  <Compile Remove="LiteMonitor.Updater\**" />
-  <Compile Remove="LiteMonitor.Wpf\**" />
-  <EmbeddedResource Remove="LiteMonitor.Updater\**" />
-  <EmbeddedResource Remove="LiteMonitor.Wpf\**" />
-  <None Remove="LiteMonitor.Updater\**" />
-  <None Remove="LiteMonitor.Wpf\**" />
+  <Compile Remove="mBar.Updater\**" />
+  <Compile Remove="mBar.Wpf\**" />
+  <EmbeddedResource Remove="mBar.Updater\**" />
+  <EmbeddedResource Remove="mBar.Wpf\**" />
+  <None Remove="mBar.Updater\**" />
+  <None Remove="mBar.Wpf\**" />
 </ItemGroup>
 	
 <!-- 引入文件资源管理 -->

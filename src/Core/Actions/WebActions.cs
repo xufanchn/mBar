@@ -1,9 +1,9 @@
 using System;
 using System.Diagnostics;
-using LiteMonitor.src.WebServer;
-using LiteMonitor.src.SystemServices;
+using mBar.src.WebServer;
+using mBar.src.SystemServices;
 
-namespace LiteMonitor.src.Core.Actions
+namespace mBar.src.Core.Actions
 {
     public static class WebActions
     {

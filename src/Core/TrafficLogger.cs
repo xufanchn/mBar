@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text.Json; // 如果报错，请引用 System.Text.Json NuGet包，或改用 Newtonsoft
 
-namespace LiteMonitor.src.Core
+namespace mBar.src.Core
 {
     // === 数据模型 ===
     public class TrafficData

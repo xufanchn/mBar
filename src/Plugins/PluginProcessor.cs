@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 
-namespace LiteMonitor.src.Plugins
+namespace mBar.src.Plugins
 {
     /// <summary>
     /// 插件数据处理类

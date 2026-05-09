@@ -1,12 +1,12 @@
-using LiteMonitor.src.Core;
-using LiteMonitor.src.UI.Helpers;
+using mBar.src.Core;
+using mBar.src.UI.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using static LiteMonitor.src.UI.Helpers.NativeMethods;
+using static mBar.src.UI.Helpers.NativeMethods;
 
-namespace LiteMonitor
+namespace mBar
 {
     public class TaskbarForm : Form
     {

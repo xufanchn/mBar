@@ -1,10 +1,10 @@
-using LiteMonitor.src.Core;
+using mBar.src.Core;
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
-namespace LiteMonitor
+namespace mBar
 {
     public static class UIRenderer
     {

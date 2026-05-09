@@ -3,21 +3,21 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Drawing;
-using LiteMonitor.src.SystemServices;
-using LiteMonitor.src.Core;
-using LiteMonitor.src.Core.Actions;
-using LiteMonitor.src.UI;
-using LiteMonitor.src.UI.Helpers;
+using mBar.src.SystemServices;
+using mBar.src.Core;
+using mBar.src.Core.Actions;
+using mBar.src.UI;
+using mBar.src.UI.Helpers;
 using System.Collections.Generic;
 using System.Diagnostics;
-using LiteMonitor.src.SystemServices.InfoService;
+using mBar.src.SystemServices.InfoService;
 
-namespace LiteMonitor
+namespace mBar
 {
     public static class MenuManager
     {
         /// <summary>
-        /// 构建 LiteMonitor 主菜单（右键菜单 + 托盘菜单）
+        /// 构建 mBar 主菜单（右键菜单 + 托盘菜单）
         /// </summary>
         public static ContextMenuStrip Build(MainForm form, Settings cfg, UIController? ui, string targetPage = null)
         {
@@ -131,7 +131,7 @@ namespace LiteMonitor
                 if (cfg.WebServerEnabled)
                 {
                     string msg = LanguageManager.T("Menu.WebServerTip");
-                    if (MessageBox.Show(msg, "LiteMonitor", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                    if (MessageBox.Show(msg, "mBar", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                     {
                         itemWebOpen.PerformClick();
                     }
@@ -431,7 +431,7 @@ namespace LiteMonitor
                 try
                 {
                     // 打开设置窗口
-                    using (var f = new LiteMonitor.src.UI.SettingsForm(cfg, ui, form))
+                    using (var f = new mBar.src.UI.SettingsForm(cfg, ui, form))
                     {
                         if (!string.IsNullOrEmpty(targetPage)) f.SwitchPage(targetPage);
                         f.ShowDialog(form);
@@ -577,11 +577,11 @@ namespace LiteMonitor
             moreRoot.DropDownItems.Add(itemCheckUpdate);
 
             var itemFeedback = new ToolStripMenuItem(LanguageManager.T("Menu.Feedback"));
-            itemFeedback.Click += (_, __) => SystemActions.OpenUrl("https://github.com/Diorser/LiteMonitor/issues");
+            itemFeedback.Click += (_, __) => SystemActions.OpenUrl("https://github.com/xufanchn/mBar/issues");
             moreRoot.DropDownItems.Add(itemFeedback);
 
             var itemChangelog = new ToolStripMenuItem(LanguageManager.T("Menu.Changelog"));
-            itemChangelog.Click += (_, __) => SystemActions.OpenUrl("https://github.com/Diorser/LiteMonitor/releases");
+            itemChangelog.Click += (_, __) => SystemActions.OpenUrl("https://github.com/xufanchn/mBar/releases");
             moreRoot.DropDownItems.Add(itemChangelog);
 
             var itemAbout = new ToolStripMenuItem(LanguageManager.T("Menu.About"));

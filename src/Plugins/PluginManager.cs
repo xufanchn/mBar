@@ -5,12 +5,12 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
-using LiteMonitor;
-using LiteMonitor.src.Core;
-using LiteMonitor.src.WebServer;
-using LiteMonitor.src.SystemServices.InfoService;
+using mBar;
+using mBar.src.Core;
+using mBar.src.WebServer;
+using mBar.src.SystemServices.InfoService;
 
-namespace LiteMonitor.src.Plugins
+namespace mBar.src.Plugins
 {
     /// <summary>
     /// 插件管理器 (Refactored)

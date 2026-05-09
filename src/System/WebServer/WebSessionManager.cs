@@ -6,9 +6,9 @@ using System.Text.RegularExpressions;
 using System.Text.Json;
 using System.Buffers;
 using System.Diagnostics;
-using LiteMonitor.src.Core;
+using mBar.src.Core;
 
-namespace LiteMonitor.src.WebServer
+namespace mBar.src.WebServer
 {
     public class WebSessionManager
     {

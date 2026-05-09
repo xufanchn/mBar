@@ -1,10 +1,10 @@
-using LiteMonitor.src.Core;
+using mBar.src.Core;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace LiteMonitor
+namespace mBar
 {
     public enum LayoutMode
     {

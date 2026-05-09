@@ -4,15 +4,15 @@ using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-using LiteMonitor.src.Core; // Added for UIUtils
-using LiteMonitor.src.SystemServices.InfoService;
+using mBar.src.Core; // Added for UIUtils
+using mBar.src.SystemServices.InfoService;
 
-namespace LiteMonitor.src.Plugins.Native
+namespace mBar.src.Plugins.Native
 {
     public static class CityCodeResolver
     {
         // TODO: 用户需要将生成的 city_code_v8.json 上传到 Cloudflare Pages，并替换此处的 URL
-        private const string JSON_DB_URL = "https://litemonitor.cn/update/CityCode.json";
+        private const string JSON_DB_URL = "https:///update/CityCode.json";
         
         // Memory Cache
         private static Dictionary<string, List<List<string>>> _db = null;
@@ -148,7 +148,7 @@ namespace LiteMonitor.src.Plugins.Native
                 {
                     // 设置超时
                     client.Timeout = TimeSpan.FromSeconds(15);
-                    client.DefaultRequestHeaders.Add("User-Agent", "LiteMonitor/1.0");
+                    client.DefaultRequestHeaders.Add("User-Agent", "mBar/1.0");
                     
                     var json = await client.GetStringAsync(JSON_DB_URL);
                     var rawDb = JsonSerializer.Deserialize<Dictionary<string, List<List<string>>>>(json);

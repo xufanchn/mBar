@@ -4,7 +4,7 @@
 
 ## 1. 概述 (Overview)
 
-`HardwareServices` 是 LiteMonitor 的硬件监控核心层，负责与底层驱动 (LibreHardwareMonitor / Windows API) 交互，采集 CPU、GPU、内存、网络、磁盘等硬件数据，并将其标准化为统一的键值对 (Key-Value) 供 UI 层展示。
+`HardwareServices` 是 mBar 的硬件监控核心层，负责与底层驱动 (LibreHardwareMonitor / Windows API) 交互，采集 CPU、GPU、内存、网络、磁盘等硬件数据，并将其标准化为统一的键值对 (Key-Value) 供 UI 层展示。
 
 ## 2. 核心架构图 (Architecture)
 

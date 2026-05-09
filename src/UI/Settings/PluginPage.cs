@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using LiteMonitor;
+using mBar;
 using System.Diagnostics;
-using LiteMonitor.src.Core;
-using LiteMonitor.src.Core.Actions;
-using LiteMonitor.src.Plugins;
-using LiteMonitor.src.UI.Controls;
+using mBar.src.Core;
+using mBar.src.Core.Actions;
+using mBar.src.Plugins;
+using mBar.src.UI.Controls;
 
-namespace LiteMonitor.src.UI.SettingsPage
+namespace mBar.src.UI.SettingsPage
 {
     public class PluginPage : SettingsPageBase
     {
@@ -134,7 +134,7 @@ namespace LiteMonitor.src.UI.SettingsPage
             // 1. Hint Note with Link
             var linkDoc = new LiteLink(LanguageManager.T("Menu.PluginDevGuide"), () => {
                 try { 
-                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("https://github.com/Diorser/LiteMonitor/blob/master/resources/plugins/PLUGIN_DEV_GUIDE.md") { UseShellExecute = true }); 
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("https://github.com/xufanchn/mBar/blob/master/resources/plugins/PLUGIN_DEV_GUIDE.md") { UseShellExecute = true }); 
                 } catch { }
             });
             var hintRow = new LiteActionRow(LanguageManager.T("Menu.PluginHint"), linkDoc);

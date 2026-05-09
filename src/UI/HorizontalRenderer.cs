@@ -1,6 +1,6 @@
-using LiteMonitor.src.Core;
+using mBar.src.Core;
 
-namespace LiteMonitor
+namespace mBar
 {
     /// <summary>
     /// 横版渲染器（基于列结构绘制）

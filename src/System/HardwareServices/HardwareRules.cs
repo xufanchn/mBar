@@ -1,7 +1,7 @@
 using System;
 using LibreHardwareMonitor.Hardware;
 
-namespace LiteMonitor.src.SystemServices
+namespace mBar.src.SystemServices
 {
     /// <summary>
     /// 硬件规则 (原 HardwareClassifier)

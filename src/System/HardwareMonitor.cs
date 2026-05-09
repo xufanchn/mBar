@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 using System.Runtime.InteropServices; // ★★★ 新增：引用用于内存修剪的库
 using System.Reflection; // ★★★ 新增：用于反射关闭历史记录
 using LibreHardwareMonitor.Hardware;
-using LiteMonitor.src.Core;
+using mBar.src.Core;
 using System.Linq;
 using System.Threading;
 
-namespace LiteMonitor.src.SystemServices
+namespace mBar.src.SystemServices
 {
     public sealed class HardwareMonitor : IDisposable
     {

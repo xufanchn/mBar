@@ -3,12 +3,12 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.Drawing.Text;
-using LiteMonitor.src.Core;
+using mBar.src.Core;
 
-namespace LiteMonitor.ThemeEditor
+namespace mBar.ThemeEditor
 {
     /// <summary>
-    /// LiteMonitor 主题编辑器主窗口
+    /// mBar 主题编辑器主窗口
     /// 左侧：主题管理
     /// 中间：TabControl（Layout / Font / Colors / Threshold）
     /// 右侧：ThemePreviewControl（实时预览）
@@ -39,7 +39,7 @@ namespace LiteMonitor.ThemeEditor
 
         public ThemeEditorForm()
         {
-            Text = "LiteMonitor Theme Editor";
+            Text = "mBar Theme Editor";
             StartPosition = FormStartPosition.CenterScreen;
             
             // DPI 缩放支持

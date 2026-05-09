@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace LiteMonitor.src.Plugins.Native
+namespace mBar.src.Plugins.Native
 {
     public static class CryptoNative
     {
@@ -29,7 +29,7 @@ namespace LiteMonitor.src.Plugins.Native
             };
             var client = new HttpClient(handler);
             client.Timeout = timeout;
-            client.DefaultRequestHeaders.Add("User-Agent", "LiteMonitor/1.0");
+            client.DefaultRequestHeaders.Add("User-Agent", "mBar/1.0");
             return client;
         }
 
@@ -51,7 +51,7 @@ namespace LiteMonitor.src.Plugins.Native
                     
                     var json = await resp.Content.ReadAsStringAsync();
                     
-                    // 解析 Bybit 原生数据并转换为 LiteMonitor 标准格式
+                    // 解析 Bybit 原生数据并转换为 mBar 标准格式
                     return ParseBybitResponse(json, symbol);
                 }
             }
@@ -65,7 +65,7 @@ namespace LiteMonitor.src.Plugins.Native
             {
                 try
                 {
-                    // Fallback URL 可能是 "https://crypto.litemonitor.cn/?symbol={{symbol}}"
+                    // Fallback URL 可能是 "https://crypto./?symbol={{symbol}}"
                     // 我们需要替换 symbol
                     string targetUrl = fallbackUrl.Replace("{{symbol}}", symbol);
                     

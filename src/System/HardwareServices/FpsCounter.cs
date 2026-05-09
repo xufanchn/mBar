@@ -9,8 +9,8 @@ using System.Security.Principal;
 using System.Threading.Tasks;
 using Microsoft.Win32; // ★★★ 新增引用 ★★★
 
-// LiteMonitor 系统服务命名空间
-namespace LiteMonitor.src.SystemServices
+// mBar 系统服务命名空间
+namespace mBar.src.SystemServices
 {
     /// <summary>
     /// FPS 计数器类，用于监控系统中各进程的帧率
@@ -64,7 +64,7 @@ namespace LiteMonitor.src.SystemServices
         // ★★★ [新增] 排除进程列表，减少字符串比较开销 ★★★
         private static readonly HashSet<string> ExcludedProcesses = new(StringComparer.OrdinalIgnoreCase) 
         { 
-            "LiteMonitor", "LiteMonitorFPS", "PresentMon", "Unknown" 
+            "mBar", "LiteMonitorFPS", "PresentMon", "Unknown" 
         };
         
         // 锁定机制变量，用于实现粘性锁定逻辑
@@ -73,7 +73,7 @@ namespace LiteMonitor.src.SystemServices
         private int _pendingCount = 0;          // 待切换进程的连续领先周期数
 
         // PresentMon 会话名称
-        private const string SESSION_NAME = "LiteMonitor_Golden_Session";
+        private const string SESSION_NAME = "mBar_Golden_Session";
         
         // 累计窗口大小：4次采样 = 2.0秒（抹平 GpuTest 波动）
         private const int ACCUMULATOR_SIZE = 4;

@@ -1,14 +1,14 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using LiteMonitor.src.UI;
-using LiteMonitor.src.SystemServices;
-using LiteMonitor.src.WebServer; // ★★★ 引用 WebServer 命名空间 ★★★
-using LiteMonitor.src.Plugins;
+using mBar.src.UI;
+using mBar.src.SystemServices;
+using mBar.src.WebServer; // ★★★ 引用 WebServer 命名空间 ★★★
+using mBar.src.Plugins;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace LiteMonitor.src.Core.Actions
+namespace mBar.src.Core.Actions
 {
     /// <summary>
     /// 全局动作执行器

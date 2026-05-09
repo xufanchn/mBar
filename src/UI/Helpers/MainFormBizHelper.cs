@@ -5,11 +5,11 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LiteMonitor.src.Core;
-using LiteMonitor.src.Core.Actions;
-using LiteMonitor.src.SystemServices;
+using mBar.src.Core;
+using mBar.src.Core.Actions;
+using mBar.src.SystemServices;
 
-namespace LiteMonitor.src.UI.Helpers
+namespace mBar.src.UI.Helpers
 {
     /// <summary>
     /// 主窗口业务助手 (Business Helper)
@@ -131,7 +131,7 @@ namespace LiteMonitor.src.UI.Helpers
         private void InitTray()
         {
             try { _tray.Icon = Properties.Resources.AppIcon ?? _form.Icon; } catch { _tray.Icon = _form.Icon; }
-            _tray.Text = "LiteMonitor";
+            _tray.Text = "mBar";
             _tray.Visible = !_cfg.HideTrayIcon;
 
             RebuildMenus();
@@ -341,7 +341,7 @@ namespace LiteMonitor.src.UI.Helpers
             if (File.Exists(tokenPath))
             {
                 try { File.Delete(tokenPath); } catch { }
-                string title = "⚡️LiteMonitor_v" + UpdateChecker.GetCurrentVersion();
+                string title = "⚡️mBar_v" + UpdateChecker.GetCurrentVersion();
                 string content = _cfg.Language == "zh" ? "🎉 软件已成功更新到最新版本！" : "🎉 Software updated to latest version!";
                 ShowNotification(title, content, ToolTipIcon.Info);
             }

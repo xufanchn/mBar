@@ -4,10 +4,10 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
 
-namespace LiteMonitor.src.Core
+namespace mBar.src.Core
 {
     /// <summary>
-    /// LiteMonitor UI Utilities (Refactored)
+    /// mBar UI Utilities (Refactored)
     /// Logic delegated to MetricUtils.
     /// This class now focuses on GDI+ Rendering helpers and Resource Management.
     /// </summary>

@@ -8,11 +8,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibreHardwareMonitor.Hardware;
-using LiteMonitor.src.Core;
+using mBar.src.Core;
 using Debug = System.Diagnostics.Debug;
-using LiteMonitor; // 引用 DownloadContext
+using mBar; // 引用 DownloadContext
 
-namespace LiteMonitor.src.SystemServices
+namespace mBar.src.SystemServices
 {
     public class DriverInstaller
     {
@@ -23,17 +23,17 @@ namespace LiteMonitor.src.SystemServices
         // 建议把最快的 Gitee/国内源放在第一个
         private readonly string[] _driverPackageUrls = new[]
         {
-            "https://gitee.com/Diorser/LiteMonitor/raw/master/resources/assets/driver.zip",
-            "https://litemonitor.cn/update/driver.zip", 
-            "https://github.com/Diorser/LiteMonitor/raw/master/resources/assets/driver.zip" 
+            "https:///raw/master/resources/assets/driver.zip",
+            "https:///update/driver.zip", 
+            "https://github.com/xufanchn/mBar/raw/master/resources/assets/driver.zip" 
         };
 
         // ★★★ [新增] PresentMon 下载源 (FPS 单独下载用) ★★★
         private readonly string[] _presentMonUrls = new[]
         {
-            "https://gitee.com/Diorser/LiteMonitor/raw/master/resources/assets/LiteMonitorFPS.exe",
-            "https://litemonitor.cn/update/LiteMonitorFPS.exe",
-            "https://github.com/Diorser/LiteMonitor/raw/master/resources/assets/LiteMonitorFPS.exe"
+            "https:///raw/master/resources/assets/mBarFPS.exe",
+            "https:///update/mBarFPS.exe",
+            "https://github.com/xufanchn/mBar/raw/master/resources/assets/mBarFPS.exe"
         };
         
         // 缓存当前的下载任务，避免并发重复弹窗
@@ -71,7 +71,7 @@ namespace LiteMonitor.src.SystemServices
                 }
 
                 bool needPawnIO = _cfg.IsAnyEnabled("CPU") && !IsPawnIOInstalled();
-                string fpsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resources", "LiteMonitorFPS.exe");
+                string fpsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resources", "mBarFPS.exe");
                 bool isFpsEnabled = _cfg.IsAnyEnabled("FPS");
                 bool isFpsValid = IsValidExecutable(fpsPath);
                 
@@ -112,14 +112,14 @@ namespace LiteMonitor.src.SystemServices
         /// </summary>
         private async Task<bool> InstallFpsComponent()
         {
-            string targetPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resources", "LiteMonitorFPS.exe");
+            string targetPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resources", "mBarFPS.exe");
             
             var context = new DownloadContext
             {
                 Title = IsChinese ? "检测到缺失FPS组件" : "FPS Monitor Component Missing",
                 Description = IsChinese 
                     ? "您开启了FPS监控，但检测到 FPS 监控组件缺失。\n需要安装该组件来支持 FPS 帧率显示功能。\n点击“立即安装”自动获取并安装。"
-                    : "FPS Monitor Component Missing.\nLiteMonitor needs to download an additional component to support FPS monitoring.\nClick 'Install' to proceed.",
+                    : "FPS Monitor Component Missing.\nmBar needs to download an additional component to support FPS monitoring.\nClick 'Install' to proceed.",
                 Urls = _presentMonUrls,
                 SavePath = targetPath,
                 ActionButtonText = "Install",
@@ -145,7 +145,7 @@ namespace LiteMonitor.src.SystemServices
         /// </summary>
         private async Task<bool> InstallDriverPackage(bool needFPS)
         {
-            string tempZip = Path.Combine(Path.GetTempPath(), $"LiteMonitor_Drivers_{Guid.NewGuid()}.zip");
+            string tempZip = Path.Combine(Path.GetTempPath(), $"mBar_Drivers_{Guid.NewGuid()}.zip");
             string targetDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resources");
             
             try 
@@ -156,7 +156,7 @@ namespace LiteMonitor.src.SystemServices
                     Title = IsChinese ? "检测到电脑缺失CPU依赖驱动" : "PawnIO Driver Missing",
                     Description = IsChinese
                         ? "电脑缺失CPU的PawnIO驱动\n软件将无法获取CPU的温度/频率/功耗等数据 \n点击“立即安装”自动获取并安装（约5MB）\n\n安装完成后即可自动恢复CPU监控等功能。"
-                        : "LiteMonitor needs to install the driver to monitor CPU temperature, frequency, and power consumption.\nClick 'Install' to install.",
+                        : "mBar needs to install the driver to monitor CPU temperature, frequency, and power consumption.\nClick 'Install' to install.",
                     Urls = _driverPackageUrls,
                     SavePath = tempZip,
                     ActionButtonText = "Install",
@@ -197,7 +197,7 @@ namespace LiteMonitor.src.SystemServices
                         string destPath = Path.Combine(targetDir, entry.FullName);
                         
                         // 智能跳过逻辑：FPS 组件如果存在且有效则不覆盖
-                        if (entry.Name.Equals("LiteMonitorFPS.exe", StringComparison.OrdinalIgnoreCase) && IsValidExecutable(destPath))
+                        if (entry.Name.Equals("mBarFPS.exe", StringComparison.OrdinalIgnoreCase) && IsValidExecutable(destPath))
                         {
                             Debug.WriteLine($"[安装程序] 跳过 {entry.Name} (文件存在且有效)");
                             continue; 
@@ -212,7 +212,7 @@ namespace LiteMonitor.src.SystemServices
                         {
                             entry.ExtractToFile(destPath, true);
                         }
-                        catch (IOException) when (entry.Name.Equals("LiteMonitorFPS.exe", StringComparison.OrdinalIgnoreCase))
+                        catch (IOException) when (entry.Name.Equals("mBarFPS.exe", StringComparison.OrdinalIgnoreCase))
                         {
                             // 忽略 FPS 文件锁定错误
                             Debug.WriteLine($"[安装程序] 无法覆盖 {entry.Name} (文件被锁定)。保留现有版本。");
