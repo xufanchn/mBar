@@ -371,7 +371,6 @@ namespace LiteMonitor
 
             // Taskbar mode: group by TaskbarColumnGroup
             var groups = items
-                .Where(x => x.VisibleInTaskbar)
                 .GroupBy(x => string.IsNullOrEmpty(x.TaskbarColumnGroup) ? x.Key : x.TaskbarColumnGroup)
                 .OrderBy(g => g.Min(item => item.TaskbarSortIndex))
                 .ToList();
@@ -380,7 +379,7 @@ namespace LiteMonitor
             foreach (var g in groups)
             {
                 var col = new Column { GroupKey = g.Key };
-                var sorted = g.OrderBy(item => item.TaskbarSortIndex).Take(4).ToList();
+                var sorted = g.OrderBy(item => item.TaskbarSortIndex).Take(4).ToList(); // max 4 rows per column
                 foreach (var cfg in sorted)
                     col.Slots.Add(CreateMetric(cfg));
                 taskbarCols.Add(col);
@@ -442,6 +441,7 @@ namespace LiteMonitor
             float? val = _mon.Get(item.Key);
             item.Value = val;
             if (val.HasValue) item.DisplayValue = val.Value;
+            item.TickSmooth(_cfg.AnimationSpeed);
         }
         
         private void CheckTemperatureAlert()
