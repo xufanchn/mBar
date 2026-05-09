@@ -1,7 +1,8 @@
 # <img src="./resources/screenshots/logo.png"  width="28" style="vertical-align: middle; margin-top: -4px;" /> mBar
 
-> **m**odern · **m**ulti · **m**onitor **bar**
-> 现代 · 多元 · 监控
+> ● ▎ **mBar**  
+> &nbsp;&nbsp;&nbsp;▎ **m**odern · **m**ulti · **m**onitor **bar**  
+> &nbsp;&nbsp;&nbsp;▎ 现代 · 多元 · 监控
 
 基于 [LiteMonitor](https://github.com/Diorser/LiteMonitor) 的独立分支，一款轻量、可定制的 Windows 桌面硬件监控软件 — 实时监测 CPU、GPU、内存、磁盘、网络等系统性能。
 
