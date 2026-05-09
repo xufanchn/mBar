@@ -10,7 +10,8 @@
     "groupSpacing": 30,
     "groupBottom": 0,
     "groupTitleOffset": 6,
-    "itemGap": 6
+    "itemGap": 6,
+    "separatorHeightRatio": 0.6
   },
   "font": {
     "family": "Microsoft YaHei UI",
@@ -37,6 +38,8 @@
     "barLow": "#8E24AA",
     "barMid": "#FFB300",
     "barHigh": "#F44336",
-    "groupBackground": "#2C1742"
+    "groupBackground": "#2C1742",
+    "separator": "#40FFFFFF",
+    "iconPrimary": "#CCCCCC"
   }
 }

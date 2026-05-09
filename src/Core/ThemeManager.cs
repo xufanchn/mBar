@@ -38,7 +38,7 @@ namespace LiteMonitor.src.Core
         public int ItemGap { get; set; } = 6;
         public int GroupTitleOffset { get; set; } = 6;
 
-        
+        public double SeparatorHeightRatio { get; set; } = 0.6;
 
         public void Scale(float s)
         {
@@ -128,6 +128,8 @@ namespace LiteMonitor.src.Core
         public string BarHigh { get; set; } = "#D50000";
 
         public string GroupBackground { get; set; } = "#2B2D31";
+        public string Separator { get; set; } = "#40FFFFFF";
+        public string IconPrimary { get; set; } = "#CCCCCC";
     }
 
     /// <summary>
@@ -150,6 +152,9 @@ namespace LiteMonitor.src.Core
         [JsonIgnore] public Font FontItem = SystemFonts.CaptionFont;
         [JsonIgnore] public Font FontValue = SystemFonts.CaptionFont;
         [JsonIgnore] public Font FontTaskbar = SystemFonts.CaptionFont;
+
+        public Color SeparatorColor { get; internal set; }
+        public Color IconPrimaryColor { get; internal set; }
 
         // ===== 任务栏字体(写死硬编码，用来被调用) =====
         
@@ -276,6 +281,14 @@ namespace LiteMonitor.src.Core
                 }
                 // 构建运行期字体
                 theme.BuildFonts();
+
+                // 解析运行期颜色
+                var c = theme.Color;
+                if (c != null)
+                {
+                    theme.SeparatorColor = ParseColor(c.Separator);
+                    theme.IconPrimaryColor = ParseColor(c.IconPrimary);
+                }
 
                 Current = theme;
                 Console.WriteLine($"[ThemeManager] Loaded theme: {theme.Name} (v{theme.Version})");
