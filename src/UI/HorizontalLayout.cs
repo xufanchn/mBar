@@ -111,7 +111,7 @@ namespace LiteMonitor
                 if (col.HasSeparatorBefore)
                     x += (int)Math.Round(1 * dpi) + gap;
 
-                int colHeight = taskbarHeight;
+                int colHeight = (_mode == LayoutMode.Taskbar) ? taskbarHeight : (singleLine ? _rowH : _rowH * 2);
                 col.Bounds = new Rectangle(x, padV, col.ColumnWidth, colHeight);
 
                 int n = col.Slots.Count;
