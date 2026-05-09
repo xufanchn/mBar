@@ -27,19 +27,13 @@ namespace LiteMonitor
         {
             if (col.Bounds == Rectangle.Empty) return;
 
-            // ★★★ 优化：优先使用 Layout 预计算好的 Bounds，不再重复计算 ★★★
-            // 这样可以同时兼容双行模式、任务栏单行模式、以及横条单行模式
-
-            // 1. 绘制 Top
-            if (col.BoundsTop != Rectangle.Empty && col.Top != null)
+            for (int i = 0; i < col.Slots.Count; i++)
             {
-                DrawItem(g, col.Top, col.BoundsTop, t);
-            }
-
-            // 2. 绘制 Bottom
-            if (col.BoundsBottom != Rectangle.Empty && col.Bottom != null)
-            {
-                DrawItem(g, col.Bottom, col.BoundsBottom, t);
+                var item = col.Slots[i];
+                if (item == null) continue;
+                var rc = i < col.SlotBounds.Length ? col.SlotBounds[i] : Rectangle.Empty;
+                if (rc != Rectangle.Empty)
+                    DrawItem(g, item, rc, t);
             }
         }
 
