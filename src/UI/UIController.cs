@@ -206,25 +206,20 @@ namespace LiteMonitor
                 // ② 更新横版 / 任务栏 (清理了冗余代码)
                 void UpdateCol(Column col)
                 {
-                    void UpdateItem(MetricItem it) 
+                    foreach (var item in col.Slots)
                     {
-                        if (it == null) return;
-                        
-                        // [新增] Dashboard 实时更新 (横版/任务栏)
-                        if (it.Key.StartsWith("DASH."))
+                        if (item == null) continue;
+                        if (item.Key.StartsWith("DASH."))
                         {
-                             string dashKey = it.Key.Substring(5);
-                             string val = InfoService.Instance.GetValue(dashKey);
-                             it.TextValue = val;
+                            string dashKey = item.Key.Substring(5);
+                            item.TextValue = InfoService.Instance.GetValue(dashKey);
+                            item.Value = null;
                         }
-                        else 
+                        else
                         {
-                            it.Value = _mon.Get(it.Key);
-                            it.TickSmooth(_cfg.AnimationSpeed);
+                            InitMetricValue(item);
                         }
                     }
-                    UpdateItem(col.Top);
-                    UpdateItem(col.Bottom);
                 }
                 
                 foreach (var col in _hxColsHorizontal) UpdateCol(col);
@@ -346,52 +341,52 @@ namespace LiteMonitor
 
         private List<Column> BuildColumnsCore(bool forTaskbar)
         {
-            var cols = new List<Column>();
+            var items = _cfg.MonitorItems
+                .Where(x => forTaskbar ? x.VisibleInTaskbar : x.VisibleInPanel)
+                .ToList();
 
-            // 1. 筛选
-            var query = _cfg.MonitorItems
-                .Where(x => forTaskbar ? x.VisibleInTaskbar : x.VisibleInPanel);
-
-            // 2. 排序 (优化：先按组聚类，防止新插件跑到末尾)
-            bool useTaskbarSort = forTaskbar || _cfg.HorizontalFollowsTaskbar;
-            List<MonitorItemConfig> items;
-
-            if (useTaskbarSort)
+            if (!forTaskbar)
             {
-                // [Taskbar Mode] Allow cross-group sorting (Flat Sort)
-                // 用户要求：任务栏排序不受分组约束，可以跨组混排
-                items = query
-                    .OrderBy(item => item.TaskbarSortIndex)
-                    .ToList();
-            }
-            else
-            {
-                // [Panel Mode] Enforce grouping (Grouped Sort)
-                // 面板模式默认保持分组聚合的视觉习惯
-                items = query
+                // Panel mode: keep existing pairing behavior
+                items = items
                     .GroupBy(x => x.UIGroup)
                     .OrderBy(g => g.Min(item => item.SortIndex))
                     .SelectMany(g => g.OrderBy(item => item.SortIndex))
                     .ToList();
-            }
 
-            bool singleLine = (forTaskbar && _cfg.TaskbarSingleLine) || 
-                              (!forTaskbar && _cfg.HorizontalMode && _cfg.HorizontalSingleLine);
-            int step = singleLine ? 1 : 2;
+                bool singleLine = _cfg.HorizontalMode && _cfg.HorizontalSingleLine;
+                int step = singleLine ? 1 : 2;
+                var cols = new List<Column>();
 
-            for (int i = 0; i < items.Count; i += step)
-            {
-                var col = new Column();
-                col.Top = CreateMetric(items[i]);
-
-                if (!singleLine && i + 1 < items.Count)
+                for (int i = 0; i < items.Count; i += step)
                 {
-                    col.Bottom = CreateMetric(items[i + 1]);
+                    var col = new Column { GroupKey = "" };
+                    col.Slots.Add(CreateMetric(items[i]));
+                    if (!singleLine && i + 1 < items.Count)
+                        col.Slots.Add(CreateMetric(items[i + 1]));
+                    cols.Add(col);
                 }
-                cols.Add(col);
+                return cols;
             }
 
-            return cols;
+            // Taskbar mode: group by TaskbarColumnGroup
+            var groups = items
+                .Where(x => x.VisibleInTaskbar)
+                .GroupBy(x => string.IsNullOrEmpty(x.TaskbarColumnGroup) ? x.Key : x.TaskbarColumnGroup)
+                .OrderBy(g => g.Min(item => item.TaskbarSortIndex))
+                .ToList();
+
+            var taskbarCols = new List<Column>();
+            foreach (var g in groups)
+            {
+                var col = new Column { GroupKey = g.Key };
+                var sorted = g.OrderBy(item => item.TaskbarSortIndex).Take(4).ToList();
+                foreach (var cfg in sorted)
+                    col.Slots.Add(CreateMetric(cfg));
+                taskbarCols.Add(col);
+            }
+
+            return taskbarCols;
         }
 
         private MetricItem CreateMetric(MonitorItemConfig cfg)
