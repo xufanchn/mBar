@@ -4,7 +4,7 @@
 > **m**odern · **m**ulti · **m**onitor **bar**  
 > 现代 · 多元 · 监控
 
-基于 [LiteMonitor](https://github.com/Diorser/LiteMonitor) 的独立分支，一款轻量、可定制的 Windows 桌面硬件监控软件 — 实时监测 CPU、GPU、内存、磁盘、网络等系统性能。
+mBar — 一款轻量、可定制的 Windows 桌面硬件监控软件，实时监测 CPU、GPU、内存、磁盘、网络等系统性能。
 
 > 本仓库已脱离上游独立开发，不再同步上游更新。
 
