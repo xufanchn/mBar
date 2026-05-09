@@ -130,7 +130,7 @@ namespace mBar
                 new MonitorItemConfig { Key = "CASE.Fan",  SortIndex = 405, VisibleInPanel = false },
                 
                 // [5xx] BATTERY (New Group)
-                new MonitorItemConfig { Key = "BAT.Percent", SortIndex = 501, VisibleInPanel = false, VisibleInTaskbar = true, TaskbarColumnGroup = "battery", IconKey = "battery", TaskbarLabel = " " },
+                new MonitorItemConfig { Key = "BAT.Percent", SortIndex = 501, VisibleInPanel = false, VisibleInTaskbar = false, TaskbarColumnGroup = "battery", IconKey = "battery", TaskbarLabel = " " },
                 new MonitorItemConfig { Key = "BAT.Power",   SortIndex = 502, VisibleInPanel = false },
                 new MonitorItemConfig { Key = "BAT.Voltage", SortIndex = 503, VisibleInPanel = false },
                 new MonitorItemConfig { Key = "BAT.Current", SortIndex = 504, VisibleInPanel = false },

@@ -60,8 +60,8 @@ namespace mBar
         public bool TaskbarCustomLayout { get; set; } = false; 
 
         public string TaskbarFontFamily { get; set; } = DEFAULT_TB_FONT;
-        public float TaskbarFontSize { get; set; } = DEFAULT_TB_SIZE_BOLD;
-        public bool TaskbarFontBold { get; set; } = true;
+        public float TaskbarFontSize { get; set; } = DEFAULT_TB_SIZE_REGULAR;
+        public bool TaskbarFontBold { get; set; } = false;
         
         // 间距配置 (单位: px, 会自动随 DPI 缩放)
         public int TaskbarItemSpacing { get; set; } = DEFAULT_TB_GAP;      // 组与组之间的间距
@@ -74,7 +74,7 @@ namespace mBar
         public bool HorizontalSingleLine { get; set; } = false; // [新增] 横条模式单行显示
 
         // ★★★ 常量定义：用于 GetStyle 中的默认策略 ★★★
-        public const string DEFAULT_TB_FONT = "Microsoft YaHei UI"; // 任务栏默认字体（兼容多语言环境，系统自带）
+        public const string DEFAULT_TB_FONT = "Segoe UI"; // 任务栏默认字体（Windows 系统字体）
         public const float DEFAULT_TB_SIZE_BOLD = 10f; // 粗字模式默认字号（提升可读性）
         public const float DEFAULT_TB_SIZE_REGULAR = 9f; // 细字模式默认字号（节省空间，更精致）
         public const int DEFAULT_TB_GAP = 6; // 任务栏组间距默认值（不同监控项之间的距离）
