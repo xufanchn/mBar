@@ -53,105 +53,87 @@ namespace LiteMonitor
         public int Build(List<Column> cols, int taskbarHeight = 32)
         {
             if (cols == null || cols.Count == 0) return 0;
-            
+
             var s = _settings.GetStyle();
             int pad = _padding;
-            int padV = _padding / 2;
-            bool isTaskbarSingle = (_mode == LayoutMode.Taskbar && _settings.TaskbarSingleLine);
-            bool isHorizontalSingle = (_mode == LayoutMode.Horizontal && _settings.HorizontalSingleLine);
+            int padV = (_mode == LayoutMode.Taskbar) ? 0 : _padding / 2;
+            bool singleLine = (_mode == LayoutMode.Taskbar && _settings.TaskbarSingleLine) ||
+                              (_mode == LayoutMode.Horizontal && _settings.HorizontalSingleLine);
 
             if (_mode == LayoutMode.Taskbar)
-            {
-                padV = 0;
-                _rowH = isTaskbarSingle ? taskbarHeight : taskbarHeight / 2;
-            }
+                _rowH = singleLine ? taskbarHeight : taskbarHeight / 2;
 
-            int totalWidth = pad * 2;
             float dpi = _dpiScale;
+            int gapBase = (_mode == LayoutMode.Taskbar) ? s.Gap : _settings.HorizontalItemSpacing;
+            int gap = (int)Math.Round(gapBase * dpi);
+
+            // Determine which columns get a separator before them
+            string prevGroup = "";
+            foreach (var col in cols)
+            {
+                if (!string.IsNullOrEmpty(prevGroup) && col.GroupKey != prevGroup)
+                    col.HasSeparatorBefore = true;
+                prevGroup = col.GroupKey;
+            }
 
             using (var g = Graphics.FromHwnd(IntPtr.Zero))
             {
                 foreach (var col in cols)
                 {
-                    // 分别计算 Top 和 Bottom 的所需宽度，然后取最大值
-                    int widthTop = 0;
-                    int widthBottom = 0;
-
-
-
-                    // 执行测量
-                    widthTop = MeasureMetricItem(g, col.Top, s);
-                    widthBottom = MeasureMetricItem(g, col.Bottom, s);
-
-                    // ★★★ 核心修复：列宽取上下两者的最大值 ★★★
-                    // 这样即使 IP 在下面，列宽也会被 IP 撑大；
-                    // 同时上面的普通项也能利用这个宽度正常显示（虽然左右会有空余，但不会重叠）
-                    col.ColumnWidth = Math.Max(widthTop, widthBottom);
-                    
-                    totalWidth += col.ColumnWidth;
+                    int maxSlotWidth = 0;
+                    foreach (var item in col.Slots)
+                    {
+                        int w = MeasureMetricItem(g, item, s);
+                        if (w > maxSlotWidth) maxSlotWidth = w;
+                    }
+                    col.ColumnWidth = maxSlotWidth;
                 }
             }
 
-
-             // 组间距逻辑
-            int gapBase = (_mode == LayoutMode.Taskbar) ? s.Gap : _settings.HorizontalItemSpacing; 
-            int gap = (int)Math.Round(gapBase * dpi); 
-
-            if (cols.Count > 1) totalWidth += (cols.Count - 1) * gap;
-            PanelWidth = totalWidth;
-            
-            // ===== 设置列 Bounds =====
-            int x = pad;
-
+            int totalWidth = pad * 2;
             foreach (var col in cols)
             {
-                int colHeight;
-                if (isTaskbarSingle || isHorizontalSingle)
-                    colHeight = _rowH;
-                else
-                    colHeight = _rowH * 2;
-                
+                totalWidth += col.ColumnWidth;
+                if (col.HasSeparatorBefore)
+                    totalWidth += (int)Math.Round(1 * dpi) + gap;
+            }
+            if (cols.Count > 1)
+            {
+                int normalGaps = cols.Count - 1 - cols.Count(c => c.HasSeparatorBefore);
+                totalWidth += normalGaps * gap;
+            }
+            PanelWidth = totalWidth;
+
+            // Compute per-slot bounds
+            int x = pad;
+            foreach (var col in cols)
+            {
+                if (col.HasSeparatorBefore)
+                    x += (int)Math.Round(1 * dpi) + gap;
+
+                int colHeight = taskbarHeight;
                 col.Bounds = new Rectangle(x, padV, col.ColumnWidth, colHeight);
 
-                if (_mode == LayoutMode.Taskbar)
+                int n = col.Slots.Count;
+                if (n == 0)
                 {
-                    int fixOffset = 1; 
-                    
-                    if (isTaskbarSingle) {
-                        col.BoundsTop = new Rectangle(x, col.Bounds.Y + fixOffset, col.ColumnWidth, colHeight);
-                        col.BoundsBottom = Rectangle.Empty;
-                    } else {
-                        // 双行模式
-                        col.BoundsTop = new Rectangle(x, col.Bounds.Y + s.VOff + fixOffset, col.ColumnWidth, _rowH - s.VOff);
-                        col.BoundsBottom = new Rectangle(x, col.Bounds.Y + _rowH - s.VOff + fixOffset, col.ColumnWidth, _rowH);
-                    }
+                    col.SlotBounds = Array.Empty<Rectangle>();
                 }
                 else
                 {
-                    // 横屏模式
-                    if (isHorizontalSingle)
+                    int slotH = colHeight / n;
+                    col.SlotBounds = new Rectangle[n];
+                    for (int i = 0; i < n; i++)
                     {
-                        // 单行模式：Top 居中显示，隐藏 Bottom
-                        col.BoundsTop = new Rectangle(col.Bounds.X, col.Bounds.Y, col.Bounds.Width, _rowH);
-                        col.BoundsBottom = Rectangle.Empty;
-                    }
-                    else
-                    {
-                        // 默认双行模式
-                        col.BoundsTop = new Rectangle(col.Bounds.X, col.Bounds.Y, col.Bounds.Width, _rowH);
-                        col.BoundsBottom = new Rectangle(col.Bounds.X, col.Bounds.Y + _rowH, col.Bounds.Width, _rowH);
+                        int y = padV + i * slotH + s.VOff;
+                        col.SlotBounds[i] = new Rectangle(x, y, col.ColumnWidth, slotH - s.VOff);
                     }
                 }
-                
-                // [补充修正] 如果是 NET.IP 混合列，我们需要告诉 Renderer 不要画 Label 区域，而是全宽显示
-                // 但由于 Renderer 是根据 (LabelRect, ValueRect) 绘图的，而 HorizontalLayout 不负责计算具体的 LabelRect
-                // 所以我们依赖 TaskbarRenderer 的逻辑：它会看 Label 是否为空。
-                // 只要列宽足够（ColumnWidth 够大），TaskbarRenderer 右对齐 Value 时就不会出问题。
 
                 x += col.ColumnWidth + gap;
             }
 
-            return padV * 2 + ((isTaskbarSingle || isHorizontalSingle) ? _rowH : _rowH * 2);
+            return padV * 2 + taskbarHeight;
         }
 
         private int MeasureMetricItem(Graphics g, MetricItem item, Settings.TBStyle s)
@@ -303,24 +285,19 @@ namespace LiteMonitor
         public string GetLayoutSignature(List<Column> cols)
         {
             if (cols == null || cols.Count == 0) return "";
-            
             unchecked
             {
                 int hash = 17;
                 foreach (var col in cols)
                 {
-                    // 直接计算 Top 和 Bottom 的特征哈希，不再生成中间样本字符串
-                    void AddItemToHash(MetricItem? item)
+                    hash = hash * 31 + col.GroupKey.GetHashCode();
+                    foreach (var item in col.Slots)
                     {
-                        if (item == null) return;
+                        if (item == null) continue;
                         string text = item.TextValue ?? item.GetFormattedText(true);
                         hash = hash * 31 + text.Length;
-                        // 关键：数字位宽一致，所以只对非数字字符（单位、小数点）做哈希
                         foreach (char c in text) if (!char.IsDigit(c)) hash = (hash << 5) - hash + c;
                     }
-
-                    AddItemToHash(col.Top);
-                    AddItemToHash(col.Bottom);
                 }
                 return hash.ToString();
             }
