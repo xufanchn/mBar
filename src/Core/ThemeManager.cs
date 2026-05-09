@@ -70,15 +70,15 @@ namespace mBar.src.Core
     /// </summary>
     public class FontConfig
     {
-        public string Family { get; set; } = "Microsoft YaHei UI";
+        public string Family { get; set; } = "Segoe UI";
         public string ValueFamily { get; set; } = "Consolas";
 
-        public double Title { get; set; } = 11.5;
-        public double Group { get; set; } = 10.5;
-        public double Item { get; set; } = 10.0;
-        public double Value { get; set; } = 10.5;
+        public double Title { get; set; } = 9.0;
+        public double Group { get; set; } = 9.0;
+        public double Item { get; set; } = 9.0;
+        public double Value { get; set; } = 9.0;
 
-        public bool Bold { get; set; } = true;
+        public bool Bold { get; set; } = false;
         public int ItemSize { get; internal set; }
     }
 

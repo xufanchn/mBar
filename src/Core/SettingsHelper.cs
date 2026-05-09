@@ -140,8 +140,8 @@ namespace mBar
                 new MonitorItemConfig { Key = "DISK.Write",SortIndex = 602, VisibleInPanel = true },
 
                 // [7xx] NET
-                new MonitorItemConfig { Key = "NET.Up",    SortIndex = 701, VisibleInPanel = true, VisibleInTaskbar = true, TaskbarColumnGroup = "network", IconKey = "network_up" },
-                new MonitorItemConfig { Key = "NET.Down",  SortIndex = 702, VisibleInPanel = true, VisibleInTaskbar = true, TaskbarColumnGroup = "network", IconKey = "network_down" },
+                new MonitorItemConfig { Key = "NET.Up",    SortIndex = 701, TaskbarSortIndex = 1, VisibleInPanel = true, VisibleInTaskbar = true, TaskbarColumnGroup = "network", IconKey = "network_up" },
+                new MonitorItemConfig { Key = "NET.Down",  SortIndex = 702, TaskbarSortIndex = 2, VisibleInPanel = true, VisibleInTaskbar = true, TaskbarColumnGroup = "network", IconKey = "network_down" },
 
                 // [8xx] DATA
                 new MonitorItemConfig { Key = "DATA.DayUp",  SortIndex = 801, VisibleInPanel = true },
