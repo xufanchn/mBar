@@ -2,8 +2,8 @@
 
 # <img src="./resources/screenshots/logo.png"  width="28" style="vertical-align: middle; margin-top: -4px;" /> mBar
 
-> ● ▎ **mBar**  
-> &nbsp;&nbsp;&nbsp;▎ **m**odern · **m**ulti · **m**onitor **bar**
+> **mBar**
+> **m**odern · **m**ulti · **m**onitor **bar**
 
 An independent fork of [LiteMonitor](https://github.com/Diorser/LiteMonitor) — a lightweight, customizable Windows hardware monitor tracking CPU, GPU, memory, disk, and network in real time.
 
