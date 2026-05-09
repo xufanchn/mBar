@@ -290,12 +290,6 @@ namespace mBar
         public int SortIndex { get; set; } = 0;
         // ★★★ 新增：任务栏独立排序索引 ★★★
         public int TaskbarSortIndex { get; set; } = 0;
-        // ★★★ [新增] 任务栏列分组键 — 同值归入同一列 ★★★
-        public string TaskbarColumnGroup { get; set; } = "";
-        // ★★★ [新增] 图标资源 Key — 空 = 不显示图标 ★★★
-        public string IconKey { get; set; } = "";
-
-
         // ★★★ 新增：统一的分组属性 ★★★
         // 所有界面（主界面、设置页、菜单）都统一调用这个属性来决定它属于哪个组
         // 从而避免了在 UI 代码里到处写 if else
