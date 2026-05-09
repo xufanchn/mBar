@@ -110,9 +110,8 @@ namespace mBar.src.SystemServices
                 string type = parts[2];        // "Used"
                 string root = driveLetter + ":\\";
 
-                DriveInfo di;
                 // ★★★ 优先查缓存 ★★★
-                if (!_driveInfoCache.TryGetValue(root, out di))
+                if (!_driveInfoCache.TryGetValue(root, out DriveInfo? di))
                 {
                     try 
                     { 

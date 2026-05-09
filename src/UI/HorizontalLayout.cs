@@ -251,8 +251,8 @@ namespace mBar
             }
 
             // 2. 处理显示单位 (叠加用户配置)
-            string userFmt = item.BoundConfig?.UnitTaskbar;
-            string unit = MetricUtils.GetDisplayUnit(item.Key, rawUnit, userFmt);
+            string? userFmt = item.BoundConfig?.UnitTaskbar;
+            string unit = MetricUtils.GetDisplayUnit(item.Key, rawUnit, userFmt!);
 
             // 3. 拼接并生成样本 (将所有数字替换为 '0')
             // [Optimization] 使用 string.Create 避免中间数组分配 (Net 8.0+)

@@ -25,9 +25,9 @@ namespace mBar.src.UI.Helpers
             {
                 try
                 {
-                    using (var f = new mBar.src.UI.SettingsForm(cfg, ui, form))
+                    using (var f = new mBar.src.UI.SettingsForm(cfg, ui!, form))
                     {
-                        f.SwitchPage("Plugins"); 
+                        f.SwitchPage("Plugins");
                         f.ShowDialog(form);
                     }
                 }
@@ -55,7 +55,7 @@ namespace mBar.src.UI.Helpers
                 {
                     try
                     {
-                        using (var f = new mBar.src.UI.SettingsForm(cfg, ui, form))
+                        using (var f = new mBar.src.UI.SettingsForm(cfg, ui!, form))
                         {
                             f.SwitchPage("System"); // 跳转到可以设置最大值的页面
                             f.ShowDialog(form);

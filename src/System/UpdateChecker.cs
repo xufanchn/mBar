@@ -144,7 +144,7 @@ namespace mBar
                         AutoExitOnSuccess = true
                     };
 
-                    new UpdateDialog(context, settings).ShowDialog();
+                    new UpdateDialog(context, settings!).ShowDialog();
                 }
                 else
                 {

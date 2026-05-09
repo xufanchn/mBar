@@ -148,7 +148,7 @@ namespace mBar.src.UI.Controls
                 g.DrawLine(_linePen, 0, fullRow.Bottom - 1, w, fullRow.Bottom - 1);
 
             // 3. 计算关键坐标
-            int baseIndent = e.Node.Level * UIUtils.S(20);
+            int baseIndent = e.Node!.Level * UIUtils.S(20);
             Rectangle chevronRect = new Rectangle(baseIndent + UIUtils.S(5), fullRow.Y, UIUtils.S(IconWidth), fullRow.Height);
 
             // --- 定义“右侧禁区” (数值列占用区域) ---

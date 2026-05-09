@@ -43,7 +43,7 @@ namespace mBar.src.WebServer
         /// </summary>
         public async Task HandleClientAsync(TcpClient client)
         {
-            byte[] buffer = null;
+            byte[]? buffer = null;
             try
             {
                 var stream = client.GetStream();
@@ -193,7 +193,7 @@ namespace mBar.src.WebServer
                     continue;
                 }
 
-                byte[] buffer = null;
+                byte[]? buffer = null;
                 try
                 {
 
@@ -317,7 +317,7 @@ namespace mBar.src.WebServer
 
         private async Task ReceiveLoop(TcpClient client)
         {
-            byte[] buffer = null;
+            byte[]? buffer = null;
             try
             {
                 var stream = client.GetStream();

@@ -12,26 +12,26 @@ namespace mBar.src.UI.SettingsPage
 {
     public class MonitorPage : SettingsPageBase
     {
-        private Panel _container;
+        private Panel _container = null!;
         private bool _isLoaded = false;
         private bool _isTaskbarTab = false;
         private string _lastDataSignature = ""; // ★★★ 性能优化：数据指纹
 
-        private Panel _tabPanel;    
-        private Panel _headerPanel; 
+        private Panel _tabPanel = null!;
+        private Panel _headerPanel = null!;
 
-        private Button _btnTabMain;
-        private Button _btnTabBar;
-        private LiteCheck _chkLinkHorizontal;
-        private LiteCheck _chkOnlyVisible;
-        
-        private Label _lblCol1; 
-        private Label _lblCol2; 
-        private Label _lblColUnit;
-        private Label _lblCol3; 
-        private Label _lblCol4; 
+        private Button _btnTabMain = null!;
+        private Button _btnTabBar = null!;
+        private LiteCheck _chkLinkHorizontal = null!;
+        private LiteCheck _chkOnlyVisible = null!;
 
-        private List<MonitorItemConfig> _workingList;
+        private Label _lblCol1 = null!;
+        private Label _lblCol2 = null!;
+        private Label _lblColUnit = null!;
+        private Label _lblCol3 = null!;
+        private Label _lblCol4 = null!;
+
+        private List<MonitorItemConfig> _workingList = null!;
 
         public MonitorPage()
         {

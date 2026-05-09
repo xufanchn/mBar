@@ -8,13 +8,13 @@ namespace mBar
 
     public class TrafficHistoryForm : Form
     {
-        private readonly Settings _cfg;
-        private readonly System.Windows.Forms.Timer _timer;
+        private readonly Settings _cfg = null!;
+        private readonly System.Windows.Forms.Timer _timer = null!;
 
-        private Label _lblSessionUp, _lblSessionDown;
-        private Label _lblTodayUp, _lblTodayDown;
-        private Label _lblListSummary;
-        private DataGridView _grid;
+        private Label _lblSessionUp = null!, _lblSessionDown = null!;
+        private Label _lblTodayUp = null!, _lblTodayDown = null!;
+        private Label _lblListSummary = null!;
+        private DataGridView _grid = null!;
         private Dictionary<HistoryViewMode, Button> _viewButtons = new Dictionary<HistoryViewMode, Button>();
 
         private HistoryViewMode _currentMode = HistoryViewMode.Daily;
@@ -214,7 +214,7 @@ namespace mBar
         }
 
         // ★★★ 新增：自定义排序方法 ★★★
-        private void Grid_SortCompare(object sender, DataGridViewSortCompareEventArgs e)
+        private void Grid_SortCompare(object? sender, DataGridViewSortCompareEventArgs e)
         {
             // 1. 获取两行的 Tag 数据 (long数组)
             // Tag: [0]=Total, [1]=Max, [2]=Up, [3]=Down
@@ -369,7 +369,7 @@ namespace mBar
             _lblListSummary.Text = $"{modeName}视图总计 (View Total):  ↑ {MetricUtils.FormatDataSize(sumUp)}    ↓ {MetricUtils.FormatDataSize(sumDown)}    (Σ {MetricUtils.FormatDataSize(sumUp + sumDown)})";
         }
 
-        private void Grid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        private void Grid_CellPainting(object? sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.ColumnIndex == 4 && e.RowIndex >= 0)
             {
@@ -382,7 +382,7 @@ namespace mBar
                     {
                         Rectangle r = e.CellBounds;
                         r.Inflate(-10, -10);
-                        using (var brushBg = new SolidBrush(C_BarBg)) e.Graphics.FillRectangle(brushBg, r);
+                        using (var brushBg = new SolidBrush(C_BarBg)) e.Graphics!.FillRectangle(brushBg, r);
 
                         double sqrtTotal = Math.Sqrt(total);
                         double sqrtMax = Math.Sqrt(max);
@@ -429,7 +429,7 @@ namespace mBar
             _ => d.ToString("yyyy-MM-dd")
         };
 
-        private class DisplayItem { public string DateLabel; public DateTime SortDate; public long Upload; public long Download; public long Total => Upload + Download; }
+        private class DisplayItem { public string DateLabel = ""; public DateTime SortDate; public long Upload; public long Download; public long Total => Upload + Download; }
 
         protected override void OnFormClosed(FormClosedEventArgs e) 
         { 

@@ -151,11 +151,11 @@ namespace mBar.src.UI.Helpers
 
             // ★★★ 水平任务栏定位 ★★★
 
-            Screen currentScreen = Screen.FromRectangle(_taskbarRect);
+            Screen? currentScreen = Screen.FromRectangle(_taskbarRect);
             if (currentScreen == null) currentScreen = Screen.PrimaryScreen;
-            
+
             bool sysCentered = TaskbarWinHelper.IsCenterAligned();
-            bool isPrimary = currentScreen.Primary;
+            bool isPrimary = currentScreen!.Primary;
             
             int rawWidgetWidth = TaskbarWinHelper.GetWidgetsWidth();      
             int manualOffset = _cfg.TaskbarManualOffset; 

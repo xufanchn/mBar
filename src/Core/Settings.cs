@@ -168,7 +168,7 @@ namespace mBar
         }
 
         // ★★★ 优化 2：全局单例引用 ★★★
-        private static Settings _instance;
+        private static Settings _instance = null!;
 
         // ★★★ 优化 3：改造 Load 方法为单例模式 ★★★
         public static Settings Load(bool forceReload = false)

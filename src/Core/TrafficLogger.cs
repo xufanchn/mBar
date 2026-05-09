@@ -26,7 +26,7 @@ namespace mBar.src.Core
         private static readonly object _ioLock = new object(); // 文件锁
         // ====== 新增缓存字段 ======
         private static DateTime _cachedDate;
-        private static string _cachedDateKey;
+        private static string _cachedDateKey = "";
 
         public static TrafficData Data { get; private set; } = new TrafficData();
 

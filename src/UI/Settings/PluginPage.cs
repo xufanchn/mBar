@@ -14,7 +14,7 @@ namespace mBar.src.UI.SettingsPage
 {
     public class PluginPage : SettingsPageBase
     {
-        private Panel _container;
+        private Panel _container = null!;
         private Dictionary<string, LiteCheck> _toggles = new Dictionary<string, LiteCheck>();
         // Track modified instances for batch restart on Save
         private HashSet<string> _modifiedInstanceIds = new HashSet<string>();
@@ -71,7 +71,7 @@ namespace mBar.src.UI.SettingsPage
                 {
                     var inst = instances.FirstOrDefault(x => x.Id == id);
                     // Pass the in-memory instance to avoid reading stale config from disk
-                    PluginManager.Instance.RestartInstance(id, inst);
+                    PluginManager.Instance.RestartInstance(id, inst!);
                 }
 
                 _modifiedInstanceIds.Clear();
@@ -358,9 +358,9 @@ namespace mBar.src.UI.SettingsPage
                                 var pLabel = t.GetProperty("Label");
                                 var pValue = t.GetProperty("Value");
                                 
-                                if (pLabel != null) label = pLabel.GetValue(opt)?.ToString();
-                                if (pValue != null) vOpt = pValue.GetValue(opt)?.ToString();
-                                
+                                if (pLabel != null) label = pLabel.GetValue(opt)?.ToString() ?? "";
+                                if (pValue != null) vOpt = pValue.GetValue(opt)?.ToString() ?? "";
+
                                 cmb.AddItem(label, vOpt);
                             }
 
@@ -374,7 +374,7 @@ namespace mBar.src.UI.SettingsPage
                             
                             // AttachAutoWidth logic inline
                             cmb.Inner.DropDown += (s, e) => {
-                                var box = (ComboBox)s;
+                                var box = (ComboBox)s!;
                                 int maxWidth = box.Width;
                                 foreach (var item in box.Items) {
                                     if (item == null) continue;

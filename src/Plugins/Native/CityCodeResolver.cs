@@ -15,7 +15,7 @@ namespace mBar.src.Plugins.Native
         private const string JSON_DB_URL = "https:///update/CityCode.json";
         
         // Memory Cache
-        private static Dictionary<string, List<List<string>>> _db = null;
+        private static Dictionary<string, List<List<string>>>? _db = null;
         private static bool _isLoading = false;
         private static readonly object _lock = new object();
 
@@ -38,7 +38,7 @@ namespace mBar.src.Plugins.Native
             }
 
             // 2. 查找逻辑
-            List<List<string>> candidates = null;
+            List<List<string>>? candidates = null;
             string targetName = "";
 
             // 3.1 优先查 District
@@ -95,7 +95,7 @@ namespace mBar.src.Plugins.Native
             });
         }
 
-        private static List<List<string>> Lookup(string key)
+        private static List<List<string>>? Lookup(string key)
         {
             if (string.IsNullOrEmpty(key)) return null;
             if (_db.TryGetValue(key, out var res)) return res;
@@ -155,7 +155,7 @@ namespace mBar.src.Plugins.Native
 
                     // [Optimization] Intern strings in the DB to reduce memory usage
                     // Many cities share the same province name, and many districts share the same city name
-                    _db = new Dictionary<string, List<List<string>>>(rawDb.Count);
+                    _db = new Dictionary<string, List<List<string>>>(rawDb!.Count);
                     
                     foreach (var kvp in rawDb)
                     {

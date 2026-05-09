@@ -147,11 +147,11 @@ namespace mBar.src.Core
         public ColorConfig Color { get; set; } = new();
 
         // 运行期字体（Json 忽略）
-        [JsonIgnore] public Font FontTitle = SystemFonts.CaptionFont;
-        [JsonIgnore] public Font FontGroup = SystemFonts.CaptionFont;
-        [JsonIgnore] public Font FontItem = SystemFonts.CaptionFont;
-        [JsonIgnore] public Font FontValue = SystemFonts.CaptionFont;
-        [JsonIgnore] public Font FontTaskbar = SystemFonts.CaptionFont;
+        [JsonIgnore] public Font FontTitle = SystemFonts.CaptionFont!;
+        [JsonIgnore] public Font FontGroup = SystemFonts.CaptionFont!;
+        [JsonIgnore] public Font FontItem = SystemFonts.CaptionFont!;
+        [JsonIgnore] public Font FontValue = SystemFonts.CaptionFont!;
+        [JsonIgnore] public Font FontTaskbar = SystemFonts.CaptionFont!;
 
         public Color SeparatorColor { get; internal set; }
         public Color IconPrimaryColor { get; internal set; }
@@ -239,8 +239,8 @@ namespace mBar.src.Core
             try
             {
                 return Directory.EnumerateFiles(ThemeDir, "*.json")
-                                .Select(Path.GetFileNameWithoutExtension)
-                                .OrderBy(n => n)
+                                .Select(p => Path.GetFileNameWithoutExtension(p)!)
+                                .OrderBy(n => n!)
                                 .ToArray();
             }
             catch

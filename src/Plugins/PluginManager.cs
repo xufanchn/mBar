@@ -28,7 +28,7 @@ namespace mBar.src.Plugins
         private readonly Dictionary<string, string> _configSnapshots = new();
         private readonly PluginExecutor _executor;
 
-        public event Action OnPluginSchemaChanged;
+        public event Action OnPluginSchemaChanged = delegate { };
 
         private PluginManager()
         {
@@ -246,11 +246,11 @@ namespace mBar.src.Plugins
             if (anyChange) settings.Save();
         }
         
-        public void RestartInstance(string instanceId, PluginInstanceConfig configOverride = null)
+        public void RestartInstance(string instanceId, PluginInstanceConfig? configOverride = null)
         {
             StopInstance(instanceId);
             
-            PluginInstanceConfig inst;
+            PluginInstanceConfig? inst;
             if (configOverride != null)
             {
                 inst = configOverride;
@@ -260,7 +260,7 @@ namespace mBar.src.Plugins
                 var settings = Settings.Load();
                 inst = settings.PluginInstances.FirstOrDefault(x => x.Id == instanceId);
             }
-            
+
             if (inst == null || !inst.Enabled)
             {
                 // Clean up items if disabled

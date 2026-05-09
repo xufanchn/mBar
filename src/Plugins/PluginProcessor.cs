@@ -83,7 +83,7 @@ namespace mBar.src.Plugins
         /// <summary>
         /// 应用数据转换规则 (Transforms)
         /// </summary>
-        public static void ApplyTransforms(List<PluginTransform> transforms, Dictionary<string, string> context)
+        public static void ApplyTransforms(List<PluginTransform>? transforms, Dictionary<string, string> context)
         {
             if (transforms == null) return;
 

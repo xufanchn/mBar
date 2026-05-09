@@ -177,9 +177,9 @@ namespace mBar.src.UI.SettingsPage
                 var pLabel = t.GetProperty("Label");
                 var pValue = t.GetProperty("Value");
                 
-                if (pLabel != null) label = pLabel.GetValue(opt)?.ToString();
-                if (pValue != null) val = pValue.GetValue(opt)?.ToString();
-                
+                if (pLabel != null) label = pLabel.GetValue(opt)?.ToString() ?? "";
+                if (pValue != null) val = pValue.GetValue(opt)?.ToString() ?? "";
+
                 cmb.AddItem(label, val);
             }
 
@@ -197,7 +197,7 @@ namespace mBar.src.UI.SettingsPage
         {
             cmb.Inner.DropDown += (s, e) =>
             {
-                var box = (ComboBox)s;
+                var box = (ComboBox)s!;
                 int maxWidth = box.Width;
                 int scrollBarWidth = SystemInformation.VerticalScrollBarWidth;
 

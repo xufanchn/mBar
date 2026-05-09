@@ -17,7 +17,7 @@ namespace mBar.src.WebServer
         private volatile bool _isRunning = false;
         private int _currentRunningPort = -1;
 
-        public string CurrentPassword { get;set; }
+        public string? CurrentPassword { get; set; }
 
         private readonly Settings _cfg;
         

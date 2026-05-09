@@ -20,7 +20,7 @@ namespace mBar
         /// <summary>
         /// 构建 mBar 主菜单（右键菜单 + 托盘菜单）
         /// </summary>
-        public static ContextMenuStrip Build(MainForm form, Settings cfg, UIController? ui, string targetPage = null)
+        public static ContextMenuStrip Build(MainForm form, Settings cfg, UIController? ui, string? targetPage = null)
         {
             var menu = new ContextMenuStrip();
             // 标记是否为任务栏模式 (影响监控项的勾选逻辑)
@@ -432,7 +432,7 @@ namespace mBar
                 try
                 {
                     // 打开设置窗口
-                    using (var f = new mBar.src.UI.SettingsForm(cfg, ui, form))
+                    using (var f = new mBar.src.UI.SettingsForm(cfg, ui!, form))
                     {
                         if (!string.IsNullOrEmpty(targetPage)) f.SwitchPage(targetPage);
                         f.ShowDialog(form);

@@ -34,7 +34,7 @@ namespace mBar
         private readonly Settings _settings;
         
         private CancellationTokenSource? _cts;
-        private Stopwatch _speedWatch;
+        private Stopwatch _speedWatch = null!;
         private bool IsChinese => _settings?.Language?.ToLower() == "zh";
 
         public UpdateDialog(DownloadContext context, Settings settings)

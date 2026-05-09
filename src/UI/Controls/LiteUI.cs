@@ -517,7 +517,7 @@ namespace mBar.src.UI.Controls
         public object? SelectedItem { get => Inner.SelectedItem; set => Inner.SelectedItem = value; } 
         public int SelectedIndex { get => Inner.SelectedIndex; set => Inner.SelectedIndex = value; } 
         public ComboBox.ObjectCollection Items => Inner.Items; 
-        public override string Text { get => Inner.Text; set => Inner.Text = value; } 
+        public override string? Text { get => Inner.Text; set => Inner.Text = value; }
 
         // Helper methods for Key-Value pairs
         public void AddItem(string text, string value)
@@ -550,7 +550,7 @@ namespace mBar.src.UI.Controls
         private Color _normalColor = Color.DodgerBlue;
         private Color _hoverColor = Color.FromArgb(0, 100, 200);
 
-        public LiteLink(string text, Action onClick = null)
+        public LiteLink(string text, Action? onClick = null)
         {
             this.Text = text;
             this.AutoSize = true;

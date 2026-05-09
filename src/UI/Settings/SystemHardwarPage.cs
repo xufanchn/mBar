@@ -13,11 +13,11 @@ namespace mBar.src.UI.SettingsPage
 {
     public class SystemHardwarPage : SettingsPageBase
     {
-        private Panel _container;
+        private Panel _container = null!;
         
         // ★★★ 修复：类型更正为 LiteComboBox ★★★
-        private LiteComboBox _cbDisk, _cbNet, _cbMobo;
-        private LiteComboBox _cbFanCpu, _cbFanPump, _cbFanCase;
+        private LiteComboBox _cbDisk = null!, _cbNet = null!, _cbMobo = null!;
+        private LiteComboBox _cbFanCpu = null!, _cbFanPump = null!, _cbFanCase = null!;
 
         public SystemHardwarPage()
         {
@@ -52,10 +52,10 @@ namespace mBar.src.UI.SettingsPage
                 string strAuto = LanguageManager.T("Menu.Auto");
 
                 // 1. 并行等待所有数据返回 (使用 HardwareScanner)
-                var taskDisks = Task.Run(() => HardwareScanner.ListAllDisks(HardwareMonitor.Instance.ComputerInstance));
-                var taskNets  = Task.Run(() => HardwareScanner.ListAllNetworks(HardwareMonitor.Instance.ComputerInstance));
-                var taskFans  = Task.Run(() => HardwareScanner.ListAllFans(HardwareMonitor.Instance.ComputerInstance, HardwareMonitor.Instance.SyncLock));
-                var taskMobo  = Task.Run(() => HardwareScanner.ListAllMoboTemps(HardwareMonitor.Instance.ComputerInstance, HardwareMonitor.Instance.SyncLock));
+                var taskDisks = Task.Run(() => HardwareScanner.ListAllDisks(HardwareMonitor.Instance!.ComputerInstance));
+                var taskNets  = Task.Run(() => HardwareScanner.ListAllNetworks(HardwareMonitor.Instance!.ComputerInstance));
+                var taskFans  = Task.Run(() => HardwareScanner.ListAllFans(HardwareMonitor.Instance!.ComputerInstance, HardwareMonitor.Instance!.SyncLock));
+                var taskMobo  = Task.Run(() => HardwareScanner.ListAllMoboTemps(HardwareMonitor.Instance!.ComputerInstance, HardwareMonitor.Instance!.SyncLock));
 
                 await Task.WhenAll(taskDisks, taskNets, taskFans, taskMobo);
 
@@ -167,7 +167,7 @@ namespace mBar.src.UI.SettingsPage
                     () => (int)(get?.Invoke() ?? 0),        
                     v => set?.Invoke((float)(int)v)
                 );
-                if(input.Parent.Controls[0] is Label lbl) lbl.Text = LanguageManager.T(key) + suffix; 
+                if(input.Parent?.Controls[0] is Label lbl) lbl.Text = LanguageManager.T(key) + suffix;
             }
             
             group.AddHint(LanguageManager.T("Menu.CalibrationTip"));

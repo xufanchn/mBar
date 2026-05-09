@@ -19,7 +19,7 @@ namespace mBar.src.WebServer
             catch { }
             return ""; 
         }
-        private static string _cachedFaviconBase64 = null;
+        private static string? _cachedFaviconBase64 = null;
 
         public const string IndexHtml = @"
 <!DOCTYPE html>

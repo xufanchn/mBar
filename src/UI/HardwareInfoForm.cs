@@ -12,10 +12,10 @@ namespace mBar.src.UI
 {
     public class HardwareInfoForm : Form
     {
-        private LiteTreeView _tree;
-        private System.Windows.Forms.Timer _refreshTimer;
-        private Panel _headerPanel;
-         private TextBox _searchInput;
+        private LiteTreeView _tree = null!;
+        private System.Windows.Forms.Timer _refreshTimer = null!;
+        private Panel _headerPanel = null!;
+        private TextBox _searchInput = null!;
         
         private Settings _settings = Settings.Load();
         

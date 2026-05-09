@@ -212,10 +212,10 @@ namespace mBar.src.Plugins
     // [Optimization] Cache keys to avoid string concatenation in hot loops
     public class PluginOutputKeys
     {
-        public string InjectKey;
-        public string InjectColorKey;
-        public string InjectUnitKey;
-        public string PropLabelKey;
-        public string PropShortKey;
+        public string InjectKey = "";
+        public string InjectColorKey = "";
+        public string InjectUnitKey = "";
+        public string PropLabelKey = "";
+        public string PropShortKey = "";
     }
 }

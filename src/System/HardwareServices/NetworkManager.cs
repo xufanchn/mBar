@@ -37,7 +37,7 @@ namespace mBar.src.SystemServices
         // ★★★ 依赖注入：性能计数器 (用于获取 SMB 流量) ★★★
         private readonly PerformanceCounterManager _perfManager;
 
-        public NetworkManager(PerformanceCounterManager perfManager = null)
+        public NetworkManager(PerformanceCounterManager? perfManager = null)
         {
             // 允许为空 (为了兼容性)，如果为空则内部功能自动禁用
             _perfManager = perfManager ?? new PerformanceCounterManager(); 
@@ -45,7 +45,7 @@ namespace mBar.src.SystemServices
             // [Fix #287] 监听网络地址变更事件，强制刷新 IP 和 网卡缓存
             // 当用户切换 WIFI 或插拔网线时，IP地址和网卡实例都会失效，必须重置
             NetworkChange.NetworkAddressChanged += (s, e) => {
-                _staticIPCache = null; 
+                _staticIPCache = "";
                 _shouldResetAdapters = true;
             };
         }
@@ -111,7 +111,7 @@ namespace mBar.src.SystemServices
                 return _staticIPCache;
             }
 
-            string foundIP = null;
+            string? foundIP = null;
 
             // 2. 策略A：直接从当前锁定的硬件中获取 (这是最直接的方式)
             try 
@@ -174,12 +174,12 @@ namespace mBar.src.SystemServices
             return _staticIPCache; 
         }
 
-        private string GetIPv4FromAdapter(NetworkInterface nic)
+        private string? GetIPv4FromAdapter(NetworkInterface nic)
         {
             try
             {
                 var props = nic.GetIPProperties();
-                string bestIP = null;
+                string? bestIP = null;
 
                 foreach (var ip in props.UnicastAddresses)
                 {
@@ -204,7 +204,7 @@ namespace mBar.src.SystemServices
                         }
                     }
                 }
-                return bestIP;
+                return bestIP!;
             }
             catch { }
             return null;

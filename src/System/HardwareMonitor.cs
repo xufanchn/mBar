@@ -442,12 +442,12 @@ namespace mBar.src.SystemServices
                         _computer.Hardware.Clear();
                     }
                     
-                    _computer.Open();
+                    _computer!.Open();
 
                     DisableSensorHistory();
                 }
 
-                _sensorMap.Rebuild(_computer, _cfg);
+                _sensorMap.Rebuild(_computer!, _cfg);
                 _valueProvider.PreCacheAllSensors(_sensorMap);
 
                 // 4. 优化 T1：重置后再次修剪内存

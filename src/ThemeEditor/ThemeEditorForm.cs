@@ -16,26 +16,26 @@ namespace mBar.ThemeEditor
     public class ThemeEditorForm : Form
     {
         // 左栏：主题管理
-        private ListBox? lstThemes;
-        private Button? btnNew;
-        private Button? btnRename;
-        private Button? btnCopy;
-        private Button? btnDelete;
+        private ListBox lstThemes = null!;
+        private Button btnNew = null!;
+        private Button btnRename = null!;
+        private Button btnCopy = null!;
+        private Button btnDelete = null!;
 
         // 中间：TabControl + 编辑页
-        private TabControl? tab;
-        private Panel? pageLayout;
-        private Panel? pageFont;
-        private Panel? pageColors;
+        private TabControl tab = null!;
+        private Panel pageLayout = null!;
+        private Panel pageFont = null!;
+        private Panel pageColors = null!;
 
         // 右栏：预览
-        private ThemePreviewControl? preview;
+        private ThemePreviewControl preview = null!;
 
         private Theme? _theme;
         private string _currentThemeName = "";
 
         // 系统字体缓存
-        private InstalledFontCollection _fontCollection;
+        private InstalledFontCollection _fontCollection = null!;
 
         public ThemeEditorForm()
         {

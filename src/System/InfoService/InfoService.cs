@@ -17,7 +17,7 @@ namespace mBar.src.SystemServices.InfoService
     public class InfoService
     {
         #region Singleton
-        private static InfoService _instance;
+        private static InfoService _instance = null!;
         public static InfoService Instance => _instance ??= new InfoService();
         private InfoService() { Initialize(); }
         #endregion
@@ -287,7 +287,7 @@ namespace mBar.src.SystemServices.InfoService
             try
             {
                 // Delegate to HardwareMonitor's NetworkManager (handles caching & multi-interface logic)
-                string ip = HardwareMonitor.Instance?.GetNetworkIP();
+                string? ip = HardwareMonitor.Instance?.GetNetworkIP();
 
                 // Validate IP
                 if (!string.IsNullOrEmpty(ip) && ip != DEFAULT_IP)

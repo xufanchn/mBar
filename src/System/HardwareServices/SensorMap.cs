@@ -37,7 +37,7 @@ namespace mBar.src.SystemServices
         private readonly object _lock = new object();
         
         // ★★★ [新增] 配置引用 ★★★
-        private Settings _cfg;
+        private Settings _cfg = null!;
 
         // [Fix] 回归 v1.2.9 的简单逻辑
         // 只有在初始化时才需要 build，之后除非手动触发或 10 分钟兜底，否则不需要任何检测。

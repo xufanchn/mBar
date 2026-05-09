@@ -15,9 +15,9 @@ namespace mBar.src.UI.SettingsPage
 
     public class SettingsPageBase : UserControl, ISettingsPage
     {
-        protected Settings Config;
-        protected MainForm MainForm;
-        protected UIController UI;
+        protected Settings Config = null!;
+        protected MainForm MainForm = null!;
+        protected UIController UI = null!;
         
         // ★★★ Refresh Mechanism for Deferred Load ★★★
         protected List<Action> _refreshActions = new List<Action>();

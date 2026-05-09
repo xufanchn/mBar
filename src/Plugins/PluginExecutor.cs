@@ -35,7 +35,7 @@ namespace mBar.src.Plugins
         
         private readonly ConcurrentDictionary<string, CacheItem> _stepCache = new();
 
-        public event Action? OnSchemaChanged;
+        public event Action? OnSchemaChanged = delegate { };
 
         public PluginExecutor()
         {
@@ -118,7 +118,7 @@ namespace mBar.src.Plugins
             _stepCache.Clear();
         }
 
-        public void ClearCache(string instanceId = null)
+        public void ClearCache(string? instanceId = null)
         {
             if (string.IsNullOrEmpty(instanceId))
             {
@@ -489,7 +489,7 @@ namespace mBar.src.Plugins
             throw new Exception($"Unknown native host: {uri.Host}");
         }
 
-        private async Task<string> FetchRawAsync(string methodStr, string url, string body, Dictionary<string, string> headers, string encoding, System.Threading.CancellationToken token, string proxy = null)
+        private async Task<string> FetchRawAsync(string methodStr, string url, string body, Dictionary<string, string> headers, string? encoding, System.Threading.CancellationToken token, string? proxy = null)
         {
             HttpMethod method = HttpMethod.Get;
             if (methodStr?.ToUpper() == "POST") method = HttpMethod.Post;
@@ -742,7 +742,7 @@ namespace mBar.src.Plugins
             System.Diagnostics.Debug.WriteLine($"Plugin exec error ({inst.Id}): {ex.Message}");
         }
 
-        private Dictionary<string, string> ResolveHeaders(Dictionary<string, string> headers, Dictionary<string, string> context)
+        private Dictionary<string, string> ResolveHeaders(Dictionary<string, string>? headers, Dictionary<string, string> context)
         {
             if (headers == null || headers.Count == 0) return new Dictionary<string, string>();
             var resolved = new Dictionary<string, string>();

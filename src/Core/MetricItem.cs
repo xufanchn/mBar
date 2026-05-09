@@ -75,7 +75,7 @@ namespace mBar
         
         public float? Value { get; set; } = null;
         public float DisplayValue { get; set; } = 0f;
-        public string TextValue { get; set; } = null;
+        public string? TextValue { get; set; } = null;
 
         // =============================
         // 缓存字段
@@ -127,7 +127,7 @@ namespace mBar
                  cfg = Settings.Load().MonitorItems.FirstOrDefault(x => x.Key == Key);
             }
             
-            string userFormat = isHorizontal ? cfg?.UnitTaskbar : cfg?.UnitPanel;
+            string? userFormat = isHorizontal ? cfg?.UnitTaskbar : cfg?.UnitPanel;
             HasCustomUnit = !string.IsNullOrEmpty(userFormat);
 
             // 3. Return TextValue (Plugin/Dashboard items)
@@ -139,7 +139,7 @@ namespace mBar
                 string defUnit = MetricUtils.GetUnitStr(Key, null, ctx);
 
                 // 2. 确定最终单位 (自动处理：用户设为Null时用默认，否则用自定义)
-                string finalUnit = MetricUtils.GetDisplayUnit(Key, defUnit, userFormat);
+                string finalUnit = MetricUtils.GetDisplayUnit(Key, defUnit, userFormat!);
 
                 // 3. 智能拼接：如果文本里还没包含这个单位，就拼上去
                 if (!string.IsNullOrEmpty(finalUnit) && !TextValue.EndsWith(finalUnit))
@@ -171,14 +171,14 @@ namespace mBar
                 // === 1. 更新主界面缓存 (Panel) ===
                 string valNormal = MetricUtils.GetValueStr(Key, DisplayValue, false);
                 string unitNormal = MetricUtils.GetUnitStr(Key, DisplayValue, MetricUtils.UnitContext.Panel);
-                string userFmtPanel = cfg?.UnitPanel;
-                
-                string finalUnitPanel = MetricUtils.GetDisplayUnit(Key, unitNormal, userFmtPanel);
+                string? userFmtPanel = cfg?.UnitPanel;
+
+                string finalUnitPanel = MetricUtils.GetDisplayUnit(Key, unitNormal, userFmtPanel!);
                 _cachedNormalText = valNormal + finalUnitPanel;
 
                 // === 2. 更新任务栏缓存 (Taskbar/Horizontal) ===
                 // 逻辑修正：任务栏模式下，必须使用 Taskbar 上下文 (例如不带 /s)
-                string userFmtTaskbar = cfg?.UnitTaskbar;
+                string? userFmtTaskbar = cfg?.UnitTaskbar;
                 bool hasCustomTaskbar = !string.IsNullOrEmpty(userFmtTaskbar);
                 
                 // 自动模式：启用数值压缩 (Compact=true) 和 紧凑单位 (Taskbar Context)
@@ -188,7 +188,7 @@ namespace mBar
                 string valTaskbar = MetricUtils.GetValueStr(Key, DisplayValue, compact);
                 string unitTaskbar = MetricUtils.GetUnitStr(Key, DisplayValue, MetricUtils.UnitContext.Taskbar);
                 
-                string finalUnitTaskbar = MetricUtils.GetDisplayUnit(Key, unitTaskbar, userFmtTaskbar);
+                string finalUnitTaskbar = MetricUtils.GetDisplayUnit(Key, unitTaskbar, userFmtTaskbar!);
                 _cachedHorizontalText = valTaskbar + finalUnitTaskbar;
 
                 // 更新公共属性以便调试 (显示当前请求模式的值)

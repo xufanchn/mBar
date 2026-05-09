@@ -11,15 +11,15 @@ namespace mBar.src.UI.SettingsPage
 {
     public class TaskbarPage : SettingsPageBase
     {
-        private Panel _container;
+        private Panel _container = null!;
         private List<Control> _customColorInputs = new List<Control>();
         private List<Control> _customLayoutInputs = new List<Control>();
-        private Control _styleCombo;
-        private CheckBox _chkCustomLayout;
+        private Control _styleCombo = null!;
+        private CheckBox _chkCustomLayout = null!;
         
         // 类型名称修正为 LiteComboBox
-        private LiteComboBox _cbFont;
-        private Task<List<string>> _taskFonts;
+        private LiteComboBox _cbFont = null!;
+        private Task<List<string>> _taskFonts = null!;
 
         public TaskbarPage()
         {
@@ -242,7 +242,7 @@ namespace mBar.src.UI.SettingsPage
             btnPick.Click += (s, e) => {
                 using (Form f = new Form { FormBorderStyle = FormBorderStyle.None, WindowState = FormWindowState.Maximized, TopMost = true, Cursor = Cursors.Cross })
                 {
-                    Bitmap bmp = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+                    Bitmap bmp = new Bitmap(Screen.PrimaryScreen!.Bounds.Width, Screen.PrimaryScreen!.Bounds.Height);
                     using (Graphics g = Graphics.FromImage(bmp)) g.CopyFromScreen(0, 0, 0, 0, bmp.Size);
                     f.BackgroundImage = bmp;
                     f.MouseClick += (ms, me) => {

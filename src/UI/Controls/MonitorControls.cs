@@ -112,9 +112,9 @@ namespace mBar.src.UI.Controls
             // 使用 Settings 上下文，确保用户能看到 {u} 占位符
             var unitCtx = isTaskbarMode ? MetricUtils.UnitContext.SettingsTaskbar : MetricUtils.UnitContext.SettingsPanel;
             string defUnit = MetricUtils.GetUnitStr(item.Key, 0, unitCtx);
-            
+
             // 2. 获取当前配置值
-            string userConfig = isTaskbarMode ? item.UnitTaskbar : item.UnitPanel;
+            string? userConfig = isTaskbarMode ? item.UnitTaskbar : item.UnitPanel;
             
             // 3. 决定显示文本 (null显示默认值, ""显示空格)
             // 注意：如果配置是""(隐藏)，我们给输入框显示一个空格" "，让用户知道这里不是空的(默认)，而是特意留空的。
@@ -188,7 +188,7 @@ namespace mBar.src.UI.Controls
             // [Fix] 根据模式动态选择上下文
             var unitCtx = isTaskbarMode ? MetricUtils.UnitContext.SettingsTaskbar : MetricUtils.UnitContext.SettingsPanel;
             string defUnit = MetricUtils.GetUnitStr(Config.Key, 0, unitCtx);
-            string userConfig = isTaskbarMode ? Config.UnitTaskbar : Config.UnitPanel;
+            string? userConfig = isTaskbarMode ? Config.UnitTaskbar : Config.UnitPanel;
 
             // 更新 Input 状态
             // null -> 默认, "" -> 空格

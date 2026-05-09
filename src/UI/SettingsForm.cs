@@ -12,13 +12,13 @@ namespace mBar.src.UI
 {
     public class SettingsForm : Form
     {
-        private Settings _cfg; // Live Settings
-        private Settings _draftCfg; // Draft Settings
-        private UIController _ui;
-        private MainForm _mainForm;
+        private Settings _cfg = null!; // Live Settings
+        private Settings _draftCfg = null!; // Draft Settings
+        private UIController _ui = null!;
+        private MainForm _mainForm = null!;
         
-        private FlowLayoutPanel _pnlNavContainer; 
-        private BufferedPanel _pnlContent; // 使用现有的 BufferedPanel
+        private FlowLayoutPanel _pnlNavContainer = null!;
+        private BufferedPanel _pnlContent = null!;
         
         // 缓存所有页面实例
         private Dictionary<string, SettingsPageBase> _pages = new Dictionary<string, SettingsPageBase>();
@@ -173,7 +173,7 @@ namespace mBar.src.UI
             // 更新导航按钮状态
             _pnlNavContainer.SuspendLayout();
             foreach (Control c in _pnlNavContainer.Controls)
-                if (c is LiteNavBtn b) b.IsActive = ((string)b.Tag == key);
+                if (c is LiteNavBtn b) b.IsActive = ((string)b.Tag! == key);
             _pnlNavContainer.ResumeLayout();
             _pnlNavContainer.Refresh(); 
             Application.DoEvents();

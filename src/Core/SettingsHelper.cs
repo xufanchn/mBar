@@ -43,7 +43,7 @@ namespace mBar
             {
                 s.InitDefaultItems();
                 // Ensure TaskbarSortIndex has initial value
-                foreach (var item in s.MonitorItems)
+                foreach (var item in s.MonitorItems!)
                 {
                     if (item.TaskbarSortIndex == 0)
                         item.TaskbarSortIndex = item.SortIndex;

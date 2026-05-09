@@ -10,15 +10,15 @@ namespace mBar.src.UI
 {
     public class CleanMemoryForm : Form
     {
-        private Label _lblTitle;
-        private Label _lblPercent;
-        private CustomProgressBar _bar; // Reusing CustomProgressBar from SpeedTestForm
-        private Theme _currentTheme;
+        private Label _lblTitle = null!;
+        private Label _lblPercent = null!;
+        private CustomProgressBar _bar = null!; // Reusing CustomProgressBar from SpeedTestForm
+        private Theme _currentTheme = null!;
         private Point _dragOffset;
         
         // GDI+ Resources to dispose
-        private Font _fontTitle;
-        private Font _fontPercent;
+        private Font _fontTitle = null!;
+        private Font _fontPercent = null!;
 
         public CleanMemoryForm()
         {

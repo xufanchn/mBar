@@ -269,7 +269,7 @@ namespace mBar.src.Core
             };
         }
 
-        public static string GetDisplayUnit(string key, string calculatedUnit, string userFormat)
+        public static string GetDisplayUnit(string key, string calculatedUnit, string? userFormat)
         {
            if (string.IsNullOrEmpty(userFormat))
             {

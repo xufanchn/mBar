@@ -416,7 +416,7 @@ namespace mBar
                  // 避免异步等待导致的 "?"
                  if (dashKey == "IP")
                  {
-                      string cachedIP = HardwareMonitor.Instance?.GetNetworkIP();
+                      string? cachedIP = HardwareMonitor.Instance?.GetNetworkIP();
                       if (!string.IsNullOrEmpty(cachedIP) && cachedIP != "?")
                       {
                            InfoService.Instance.InjectIP(cachedIP);

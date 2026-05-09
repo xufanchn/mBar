@@ -13,7 +13,7 @@ namespace mBar.src.Plugins
     /// </summary>
     public class PluginMonitorSyncService
     {
-        private static PluginMonitorSyncService _instance;
+        private static PluginMonitorSyncService _instance = null!;
         public static PluginMonitorSyncService Instance => _instance ??= new PluginMonitorSyncService();
 
         private PluginMonitorSyncService() { }

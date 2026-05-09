@@ -63,12 +63,12 @@ namespace mBar
     public class SpeedTestForm : Form
     {
         // 移除 lblInstantSpeed 的定义和注释
-        private Label lblStatus;
-        private Label lblSpeed;
-        private Label lblLocalSpeed;
-        private ProgressBar bar;
-        private Button btnClose;
-        private Button btnRetry;
+        private Label lblStatus = null!;
+        private Label lblSpeed = null!;
+        private Label lblLocalSpeed = null!;
+        private ProgressBar bar = null!;
+        private Button btnClose = null!;
+        private Button btnRetry = null!;
 
         // 测速状态枚举 (已移除 Connection)
         private enum SpeedTestPhase { Idle, Download, Upload, Complete }
@@ -90,7 +90,7 @@ namespace mBar
         private Point _dragOffset;
 
         // 定时器用于实时更新本地网卡数据
-        private System.Windows.Forms.Timer _localDataTimer;
+        private System.Windows.Forms.Timer _localDataTimer = null!;
 
         // 进度条的进度分配
         private const int DownloadStartProgress = 0;
@@ -104,8 +104,8 @@ namespace mBar
         private const int ButtonSpacing = 10;
 
         // 主题管理器
-        private Theme _currentTheme;
-        private readonly Settings _cfg;
+        private Theme _currentTheme = null!;
+        private readonly Settings _cfg = null!;
 
         // DPI 缩放函数
         private int ScaleDPI(int value)
