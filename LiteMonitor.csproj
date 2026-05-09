@@ -20,6 +20,8 @@
 
 	<ItemGroup>
     <PackageReference Include="LibreHardwareMonitorLib" Version="0.9.6" />
+    <PackageReference Include="SkiaSharp" Version="2.88.9" />
+    <PackageReference Include="Svg.Skia" Version="2.0.0" />
     <PackageReference Include="System.Text.Json" Version="9.0.10" />
   </ItemGroup>
 
