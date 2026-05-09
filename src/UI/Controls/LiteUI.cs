@@ -517,7 +517,9 @@ namespace mBar.src.UI.Controls
         public object? SelectedItem { get => Inner.SelectedItem; set => Inner.SelectedItem = value; } 
         public int SelectedIndex { get => Inner.SelectedIndex; set => Inner.SelectedIndex = value; } 
         public ComboBox.ObjectCollection Items => Inner.Items; 
+#pragma warning disable CS8765 // setter value nullability mismatch with Control.Text
         public override string Text { get => Inner.Text ?? ""; set => Inner.Text = value ?? ""; }
+#pragma warning restore CS8765
 
         // Helper methods for Key-Value pairs
         public void AddItem(string text, string value)
