@@ -329,14 +329,15 @@ namespace LiteMonitor
 
     public class Column
     {
-        public MetricItem? Top;
-        public MetricItem? Bottom;
-
+        public string GroupKey = "";
+        public List<MetricItem> Slots = new();
         public int ColumnWidth;
         public Rectangle Bounds = Rectangle.Empty;
+        public Rectangle[] SlotBounds = Array.Empty<Rectangle>();
+        public bool HasSeparatorBefore = false;
 
-        // ★★ B 方案新增：上下行布局由 Layout 计算，不再由 Renderer 处理
-        public Rectangle BoundsTop = Rectangle.Empty;
-        public Rectangle BoundsBottom = Rectangle.Empty;
+        public int SlotCount => Slots?.Count ?? 0;
+
+        public MetricItem? this[int index] => (Slots != null && index >= 0 && index < Slots.Count) ? Slots[index] : null;
     }
 }
