@@ -255,7 +255,7 @@ namespace mBar.src.Plugins
                     foreach (var part in parts)
                     {
                         string key = part.Trim();
-                        if (inputs.TryGetValue(key, out string val) && !string.IsNullOrEmpty(val))
+                        if (inputs.TryGetValue(key, out string? val) && !string.IsNullOrEmpty(val))
                         {
                             resolved = true;
                             break;

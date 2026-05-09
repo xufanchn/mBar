@@ -48,8 +48,8 @@ namespace mBar.src.UI.Controls
 
         private bool _isTaskbarMode = false; // 记录当前模式
 
-        public event EventHandler MoveUp;
-        public event EventHandler MoveDown;
+        public event EventHandler? MoveUp;
+        public event EventHandler? MoveDown;
 
         // ★★★ 修改构造函数：增加 isTaskbarMode 参数 ★★★
         public MonitorItemRow(MonitorItemConfig item, bool isTaskbarMode)
@@ -340,9 +340,9 @@ namespace mBar.src.UI.Controls
         public string GroupKey { get; private set; }
         public LiteUnderlineInput InputAlias { get; private set; }
         private LiteCheck _chkAll; // [需求2] 增加组开关
-        public event EventHandler MoveUp;
-        public event EventHandler MoveDown;
-        public event EventHandler<bool> ToggleGroup; // [需求2] 组开关事件
+        public event EventHandler? MoveUp;
+        public event EventHandler? MoveDown;
+        public event EventHandler<bool>? ToggleGroup; // [需求2] 组开关事件
 
         public MonitorGroupHeader(string groupKey, string alias)
         {

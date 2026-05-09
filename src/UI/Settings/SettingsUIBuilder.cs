@@ -122,7 +122,7 @@ namespace mBar.src.UI.SettingsPage
             else if (cmb.Items.Count > 0) cmb.SelectedIndex = 0;
 
             // Immediate binding
-            cmb.Inner.SelectedIndexChanged += (s, e) => set(cmb.Text);
+            cmb.Inner.SelectedIndexChanged += (s, e) => set(cmb.Text ?? "");
             page.RegisterRefresh(() => 
             {
                 string current = get();

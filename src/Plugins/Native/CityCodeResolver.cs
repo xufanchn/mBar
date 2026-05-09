@@ -98,7 +98,7 @@ namespace mBar.src.Plugins.Native
         private static List<List<string>>? Lookup(string key)
         {
             if (string.IsNullOrEmpty(key)) return null;
-            if (_db.TryGetValue(key, out var res)) return res;
+            if (_db!.TryGetValue(key, out var res)) return res;
 
             // 处理后缀
             string root = System.Text.RegularExpressions.Regex.Replace(key, "(自治州|自治县|地区|盟|市|区|县|旗)$", "");

@@ -175,7 +175,7 @@ namespace mBar.src.Core
             }
             catch
             {
-                FontTitle = FontGroup = FontItem = FontValue = SystemFonts.CaptionFont;
+                FontTitle = FontGroup = FontItem = FontValue = SystemFonts.CaptionFont!;
             }
         }
         public void Scale(float dpiScale, float userScale)

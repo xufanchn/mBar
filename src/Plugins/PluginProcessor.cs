@@ -209,7 +209,7 @@ namespace mBar.src.Plugins
                     string truePart = content.Substring(qIdx + 1, cIdx - (qIdx + 1)).Trim();
                     string falsePart = content.Substring(cIdx + 1).Trim();
 
-                    bool isTrue = context.TryGetValue(condKey, out string val) && !string.IsNullOrEmpty(val);
+                    bool isTrue = context.TryGetValue(condKey, out string? val) && !string.IsNullOrEmpty(val);
                     string target = isTrue ? truePart : falsePart;
 
                     // Remove quotes if present
@@ -219,7 +219,7 @@ namespace mBar.src.Plugins
                     }
 
                     // Treat as variable if not quoted
-                    return context.TryGetValue(target, out string tVal) ? tVal : "";
+                    return context.TryGetValue(target, out string? tVal) ? tVal : "";
                 }
 
                 // Handle Fallback Syntax: "var ?? fallback"
@@ -236,7 +236,7 @@ namespace mBar.src.Plugins
                             return key.Substring(1, key.Length - 2);
                         }
 
-                        if (context.TryGetValue(key, out string val) && !string.IsNullOrEmpty(val))
+                        if (context.TryGetValue(key, out string? val) && !string.IsNullOrEmpty(val))
                         {
                             return val;
                         }
@@ -245,7 +245,7 @@ namespace mBar.src.Plugins
                 }
                 
                 // Standard Lookup
-                if (context.TryGetValue(content, out string value))
+                if (context.TryGetValue(content, out string? value))
                 {
                     return value;
                 }

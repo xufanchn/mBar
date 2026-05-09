@@ -186,13 +186,13 @@ namespace mBar.src.UI.Helpers
         // =================================================================
         public (IntPtr hTaskbar, IntPtr hTray) FindHandles(string targetDevice)
         {
-            Screen target = Screen.PrimaryScreen;
+            Screen? target = Screen.PrimaryScreen;
             if (!string.IsNullOrEmpty(targetDevice))
             {
                 target = Screen.AllScreens.FirstOrDefault(s => s.DeviceName == targetDevice) ?? Screen.PrimaryScreen;
             }
 
-            if (target.Primary)
+            if (target!.Primary)
             {
                 IntPtr hTaskbar = FindWindow("Shell_TrayWnd", null);
                 IntPtr hTray = FindWindowEx(hTaskbar, IntPtr.Zero, "TrayNotifyWnd", null);

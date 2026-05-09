@@ -199,7 +199,7 @@ namespace mBar.src.Plugins
                         Body = body,
                         Method = tmpl.Execution.Method,
                         Headers = tmpl.Execution.Headers,
-                        ResponseEncoding = null 
+                        ResponseEncoding = null!
                     };
 
                     // Direct fetch (no caching logic for legacy root level yet, or use step logic?)
@@ -366,7 +366,7 @@ namespace mBar.src.Plugins
                 {
                     foreach (var kv in step.Extract)
                     {
-                        if (context.TryGetValue(kv.Key, out string val))
+                        if (context.TryGetValue(kv.Key, out string? val))
                         {
                             if (val == PluginConstants.STATUS_UNKNOWN || val == PluginConstants.STATUS_ERROR)
                             {
@@ -403,7 +403,7 @@ namespace mBar.src.Plugins
 
                         _stepCache[cacheKey] = new CacheItem
                         {
-                            RawResponse = resultRaw,
+                            RawResponse = resultRaw!,
                             Timestamp = DateTime.Now
                         };
                     }
@@ -423,7 +423,7 @@ namespace mBar.src.Plugins
         // Proxy Client Cache: Key = "host:port" or "http://host:port"
         private readonly ConcurrentDictionary<string, HttpClient> _proxyClients = new();
 
-        private HttpClient GetClient(string proxy)
+        private HttpClient GetClient(string? proxy)
         {
             if (string.IsNullOrEmpty(proxy))
             {

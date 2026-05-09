@@ -133,7 +133,7 @@ namespace mBar.src.SystemServices
                     {
                         if (kv.Value.NativeAdapter != null)
                         {
-                            string ip = GetIPv4FromAdapter(kv.Value.NativeAdapter);
+                            string? ip = GetIPv4FromAdapter(kv.Value.NativeAdapter);
                             if (!string.IsNullOrEmpty(ip))
                             {
                                 foundIP = ip;

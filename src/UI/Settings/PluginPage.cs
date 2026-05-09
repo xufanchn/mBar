@@ -108,7 +108,7 @@ namespace mBar.src.UI.SettingsPage
             _toggles.Clear();
 
             // 2. Suspend Layout & Clear Controls (Reuse container)
-            _container.SuspendLayout();
+            _container!.SuspendLayout();
             
             // Clear pending actions
             _refreshActions.Clear();

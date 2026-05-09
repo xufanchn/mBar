@@ -222,7 +222,7 @@ namespace mBar.src.Core.Actions
                 int targetPort = cfg.WebServerPort;
                 int currentPort = server.CurrentRunningPort;
                 string targetPwd = cfg.WebServerPassword;
-                string currentPwd = server.CurrentPassword;
+                string? currentPwd = server.CurrentPassword;
 
                 if (shouldRun)
                 {
