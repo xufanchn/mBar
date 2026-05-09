@@ -129,7 +129,7 @@ namespace mBar.src.Core
 
         public string GroupBackground { get; set; } = "#2B2D31";
         public string Separator { get; set; } = "#40FFFFFF";
-        public string IconPrimary { get; set; } = "#00E5FF";
+        public string IconPrimary { get; set; } = "#4FC3F7";
     }
 
     /// <summary>

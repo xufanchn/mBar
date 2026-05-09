@@ -378,14 +378,16 @@ namespace mBar
 
             // 如果未开启自定义布局，使用标准布局参数
             bool isSmall = settings.TaskbarPresetStyle == 0; // 0 = Regular/Small, 1 = Bold/Big
+            float size = isSmall ? Settings.DEFAULT_TB_SIZE_REGULAR : Settings.DEFAULT_TB_SIZE_BOLD;
+            bool bold = !isSmall;
 
             return new Settings.TBStyle {
-                Font = Settings.DEFAULT_TB_FONT, 
-                Size = isSmall ? Settings.DEFAULT_TB_SIZE_REGULAR : Settings.DEFAULT_TB_SIZE_BOLD,
-                Bold = !isSmall,
-                Gap = Settings.DEFAULT_TB_GAP, 
-                Inner = isSmall ? Settings.DEFAULT_TB_INNER_REGULAR : Settings.DEFAULT_TB_INNER_BOLD, 
-                VOff = Settings.DEFAULT_TB_VOFF 
+                Font = Settings.DEFAULT_TB_FONT,
+                Size = size,
+                Bold = bold,
+                Gap = (int)(size * 0.67f),
+                Inner = (int)(size * 0.67f),
+                VOff = (int)(size * 0.22f)
             };
         }
 

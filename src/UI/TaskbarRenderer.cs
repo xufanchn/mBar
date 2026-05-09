@@ -13,17 +13,17 @@ namespace mBar
         // 字体缓存 - 直接初始化，避免每次渲染都创建字体
         private static Font? _cachedFont = null;
 
-        // 浅色主题 — Windows 状态栏风格
+        // 浅色主题 — 深蓝极客风
         private static readonly Color LABEL_LIGHT = Color.FromArgb(20, 20, 20);
-        private static readonly Color SAFE_LIGHT = Color.FromArgb(0x00, 0xAA, 0xBB);  // cyan-teal
-        private static readonly Color WARN_LIGHT = Color.FromArgb(0xCC, 0x77, 0x00);
-        private static readonly Color CRIT_LIGHT = Color.FromArgb(0xCC, 0x22, 0x33);
+        private static readonly Color SAFE_LIGHT = Color.FromArgb(0x15, 0x65, 0xC0);  // deep blue
+        private static readonly Color WARN_LIGHT = Color.FromArgb(0xE6, 0x51, 0x00);  // dark amber
+        private static readonly Color CRIT_LIGHT = Color.FromArgb(0xC6, 0x28, 0x28);  // dark red
 
-        // 深色主题 — 科幻霓虹风
-        private static readonly Color LABEL_DARK = Color.FromArgb(0xDD, 0xDD, 0xDD);
-        private static readonly Color SAFE_DARK = Color.FromArgb(0x00, 0xE5, 0xFF);   // cyan neon
-        private static readonly Color WARN_DARK = Color.FromArgb(0xFF, 0xCC, 0x33);   // amber neon
-        private static readonly Color CRIT_DARK = Color.FromArgb(0xFF, 0x44, 0x55);   // red neon
+        // 深色主题 — 深蓝极客风
+        private static readonly Color LABEL_DARK = Color.White;
+        private static readonly Color SAFE_DARK = Color.FromArgb(0x4F, 0xC3, 0xF7);   // geek blue
+        private static readonly Color WARN_DARK = Color.FromArgb(0xFF, 0xB7, 0x4D);   // amber
+        private static readonly Color CRIT_DARK = Color.FromArgb(0xEF, 0x53, 0x50);   // red
 
         // ★★★ [新增] 自定义颜色缓存 ★★★
         private static bool _useCustom = false;
@@ -143,7 +143,7 @@ namespace mBar
             if (hideLabel)
             {
                 TextRenderer.DrawText(g, value, font, remainingRect, valueColor,
-                    TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.NoPadding);
+                    TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter | TextFormatFlags.NoPadding);
             }
             else
             {
