@@ -105,8 +105,8 @@ namespace LiteMonitor
                 new MonitorItemConfig { Key = "DASH.IP",   SortIndex = 104, TaskbarSortIndex = 1400, VisibleInPanel = false, TaskbarLabel = " " },
                
                 // [2xx] CPU
-                new MonitorItemConfig { Key = "CPU.Load",  SortIndex = 201, VisibleInPanel = true, VisibleInTaskbar = true },
-                new MonitorItemConfig { Key = "CPU.Temp",  SortIndex = 202, VisibleInPanel = true, VisibleInTaskbar = true },
+                new MonitorItemConfig { Key = "CPU.Load",  SortIndex = 201, VisibleInPanel = true, VisibleInTaskbar = true, TaskbarColumnGroup = "cpu", IconKey = "cpu" },
+                new MonitorItemConfig { Key = "CPU.Temp",  SortIndex = 202, VisibleInPanel = true, VisibleInTaskbar = true, TaskbarColumnGroup = "cpu", IconKey = "cpu_temp" },
                 new MonitorItemConfig { Key = "CPU.Clock", SortIndex = 203, VisibleInPanel = false },
                 new MonitorItemConfig { Key = "CPU.Power", SortIndex = 204, VisibleInPanel = false },
                 // [New] CPU Voltage
@@ -115,22 +115,22 @@ namespace LiteMonitor
                 new MonitorItemConfig { Key = "CPU.Pump",  SortIndex = 207, VisibleInPanel = false },
 
                 // [3xx] GPU
-                new MonitorItemConfig { Key = "GPU.Load",  SortIndex = 301, VisibleInPanel = true, VisibleInTaskbar = true },
-                new MonitorItemConfig { Key = "GPU.Temp",  SortIndex = 302, VisibleInPanel = true },
+                new MonitorItemConfig { Key = "GPU.Load",  SortIndex = 301, VisibleInPanel = true, VisibleInTaskbar = true, TaskbarColumnGroup = "gpu", IconKey = "gpu" },
+                new MonitorItemConfig { Key = "GPU.Temp",  SortIndex = 302, VisibleInPanel = true, VisibleInTaskbar = true, TaskbarColumnGroup = "gpu", IconKey = "gpu_temp" },
                 new MonitorItemConfig { Key = "GPU.Clock", SortIndex = 303, VisibleInPanel = false },
                 new MonitorItemConfig { Key = "GPU.Power", SortIndex = 304, VisibleInPanel = false },
                 new MonitorItemConfig { Key = "GPU.Fan",   SortIndex = 305, VisibleInPanel = false },
                 new MonitorItemConfig { Key = "GPU.VRAM",  SortIndex = 306, VisibleInPanel = true },
 
                 // [4xx] HOST (MEM, FPS, MOBO, DISK Temp, CASE Fan)
-                new MonitorItemConfig { Key = "MEM.Load",  SortIndex = 401, VisibleInPanel = true, VisibleInTaskbar = true },
+                new MonitorItemConfig { Key = "MEM.Load",  SortIndex = 401, VisibleInPanel = true, VisibleInTaskbar = true, TaskbarColumnGroup = "host", IconKey = "memory" },
                 new MonitorItemConfig { Key = "FPS",       SortIndex = 402, VisibleInPanel = false },
                 new MonitorItemConfig { Key = "MOBO.Temp", SortIndex = 403, VisibleInPanel = false },
                 new MonitorItemConfig { Key = "DISK.Temp", SortIndex = 404, VisibleInPanel = false },
                 new MonitorItemConfig { Key = "CASE.Fan",  SortIndex = 405, VisibleInPanel = false },
                 
                 // [5xx] BATTERY (New Group)
-                new MonitorItemConfig { Key = "BAT.Percent", SortIndex = 501, VisibleInPanel = false, VisibleInTaskbar = false },
+                new MonitorItemConfig { Key = "BAT.Percent", SortIndex = 501, VisibleInPanel = false, VisibleInTaskbar = true, TaskbarColumnGroup = "battery", IconKey = "battery" },
                 new MonitorItemConfig { Key = "BAT.Power",   SortIndex = 502, VisibleInPanel = false },
                 new MonitorItemConfig { Key = "BAT.Voltage", SortIndex = 503, VisibleInPanel = false },
                 new MonitorItemConfig { Key = "BAT.Current", SortIndex = 504, VisibleInPanel = false },
@@ -140,8 +140,8 @@ namespace LiteMonitor
                 new MonitorItemConfig { Key = "DISK.Write",SortIndex = 602, VisibleInPanel = true },
 
                 // [7xx] NET
-                new MonitorItemConfig { Key = "NET.Up",    SortIndex = 701, VisibleInPanel = true, VisibleInTaskbar = true },
-                new MonitorItemConfig { Key = "NET.Down",  SortIndex = 702, VisibleInPanel = true, VisibleInTaskbar = true },
+                new MonitorItemConfig { Key = "NET.Up",    SortIndex = 701, VisibleInPanel = true, VisibleInTaskbar = true, TaskbarColumnGroup = "network", IconKey = "network_up" },
+                new MonitorItemConfig { Key = "NET.Down",  SortIndex = 702, VisibleInPanel = true, VisibleInTaskbar = true, TaskbarColumnGroup = "network", IconKey = "network_down" },
 
                 // [8xx] DATA
                 new MonitorItemConfig { Key = "DATA.DayUp",  SortIndex = 801, VisibleInPanel = true },
