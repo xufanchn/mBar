@@ -1,6 +1,6 @@
-# <img src="./resources/screenshots/logo.png"  width="28" style="vertical-align: middle; margin-top: -4px;" /> 3mBar
+# <img src="./resources/screenshots/logo.png"  width="28" style="vertical-align: middle; margin-top: -4px;" /> mBar
 
-> **the modern monitor bar, and more.**
+> **m**odern · **m**onitor · **m**ore
 
 基于 [LiteMonitor](https://github.com/Diorser/LiteMonitor) 的独立分支，一款轻量、可定制的 Windows 桌面硬件监控软件 — 实时监测 CPU、GPU、内存、磁盘、网络等系统性能。
 
