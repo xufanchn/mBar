@@ -202,13 +202,9 @@ namespace LiteMonitor.src.UI.Helpers
 
         public void BuildVerticalLayout(List<Column> cols)
         {
-            var s = _cfg.GetStyle(); 
-            
+            var s = _cfg.GetStyle();
             int w = _taskbarRect.Width;
-            if (w < 20) w = 60; 
-
-            int itemHeight = (int)(s.Size * 1.5f + 6); 
-            if (itemHeight < 20) itemHeight = 20;
+            if (w < 20) w = 60;
 
             int margin = Math.Max(0, s.Inner / 2);
             int contentWidth = w - (margin * 2);
@@ -216,31 +212,30 @@ namespace LiteMonitor.src.UI.Helpers
             int y = 0;
             foreach (var col in cols)
             {
-                col.Bounds = Rectangle.Empty;
-                col.BoundsTop = Rectangle.Empty;
-                col.BoundsBottom = Rectangle.Empty;
-
-                if (col.Top != null)
+                int n = col.Slots.Count;
+                if (n == 0)
                 {
-                    col.BoundsTop = new Rectangle(margin, y, contentWidth, itemHeight);
+                    col.Bounds = Rectangle.Empty;
+                    col.SlotBounds = Array.Empty<Rectangle>();
+                    continue;
+                }
+
+                int itemHeight = (int)(s.Size * 1.5f + 6);
+                if (itemHeight < 20) itemHeight = 20;
+
+                col.SlotBounds = new Rectangle[n];
+                int colHeight = n * itemHeight;
+                col.Bounds = new Rectangle(margin, y, contentWidth, colHeight);
+
+                for (int i = 0; i < n; i++)
+                {
+                    col.SlotBounds[i] = new Rectangle(margin, y, contentWidth, itemHeight);
                     y += itemHeight;
                 }
-
-                if (col.Bottom != null)
-                {
-                    col.BoundsBottom = new Rectangle(margin, y, contentWidth, itemHeight);
-                    y += itemHeight;
-                }
-
-                if (col.Top != null && col.Bottom == null)
-                {
-                    col.Bounds = col.BoundsTop;
-                }
-
-                y += s.VOff;
             }
-            _form.Width = w;
-            _form.Height = y;
+
+            int totalHeight = y;
+            _winHelper.SetPosition(_hTaskbar, _taskbarRect.Left, _taskbarRect.Top, w, totalHeight);
         }
 
         // =================================================================
