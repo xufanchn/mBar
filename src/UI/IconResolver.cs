@@ -17,7 +17,7 @@ namespace LiteMonitor
             if (string.IsNullOrEmpty(key)) return null;
             int colorArgb = themeColor.ToArgb();
             var cacheKey = (key, targetSize, colorArgb);
-            if (_cache.TryGetValue(cacheKey, out var cached) && cached != null)
+            if (_cache.TryGetValue(cacheKey, out var cached))
                 return cached;
 
             Bitmap? result = TryLoadSvg(key, targetSize, themeColor)
@@ -35,12 +35,14 @@ namespace LiteMonitor
 
             try
             {
-                var svg = new SKSvg();
+                using var svg = new SKSvg();
                 svg.Load(path);
                 if (svg.Model == null) return null;
 
                 var skColor = new SKColor((uint)color.ToArgb() & 0x00FFFFFF | 0xFF000000);
-                float scale = size / Math.Max(svg.Model.CullRect.Width, svg.Model.CullRect.Height);
+                float maxDim = Math.Max(svg.Model.CullRect.Width, svg.Model.CullRect.Height);
+                if (maxDim <= 0) return null;
+                float scale = size / maxDim;
 
                 var info = new SKImageInfo(size, size);
                 using var surface = SKSurface.Create(info);
