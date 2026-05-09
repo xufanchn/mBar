@@ -244,7 +244,10 @@ namespace LiteMonitor
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            TaskbarRenderer.Render(g, _cols, _bizHelper.LastIsLightTheme);
+            var theme = ThemeManager.Current;
+            Color sepColor = _cfg.TaskbarShowSeparators ? theme.SeparatorColor : Color.Transparent;
+            Color iconColor = theme.IconPrimaryColor;
+            TaskbarRenderer.Render(g, _cols, _bizHelper.LastIsLightTheme, _bizHelper.Height, sepColor, iconColor);
         }
 
         protected override CreateParams CreateParams
