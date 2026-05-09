@@ -278,13 +278,15 @@ namespace LiteMonitor
         [JsonIgnore]
         public string DisplayTaskbarLabel => !string.IsNullOrEmpty(TaskbarLabel) ? TaskbarLabel : DynamicTaskbarLabel;
 
+        public string IconKey { get; set; } = "";
+
         // ★★★ [新增] 自定义单位配置 ★★★
         // null/"Auto" = 自动(默认), "" = 不显示, "{u}/s" = 自定义格式
-        public string UnitPanel { get; set; } = null; 
+        public string UnitPanel { get; set; } = null;
         public string UnitTaskbar { get; set; } = null;
         public bool VisibleInPanel { get; set; } = true;
         public bool VisibleInTaskbar { get; set; } = false;
-        
+
         public int SortIndex { get; set; } = 0;
         // ★★★ 新增：任务栏独立排序索引 ★★★
         public int TaskbarSortIndex { get; set; } = 0;
