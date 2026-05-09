@@ -336,8 +336,8 @@ namespace LiteMonitor
         public Rectangle[] SlotBounds = Array.Empty<Rectangle>();
         public bool HasSeparatorBefore = false;
 
-        public int SlotCount => Slots?.Count ?? 0;
+        public int SlotCount => Slots.Count;
 
-        public MetricItem? this[int index] => (Slots != null && index >= 0 && index < Slots.Count) ? Slots[index] : null;
+        public MetricItem? this[int index] => (uint)index < (uint)Slots.Count ? Slots[index] : null;
     }
 }
