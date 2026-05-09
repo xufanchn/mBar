@@ -7,6 +7,7 @@ using mBar.src.SystemServices;
 using mBar.src.Core;
 using mBar.src.Core.Actions;
 using mBar.src.UI;
+using mBar.Properties;
 using mBar.src.UI.Helpers;
 using System.Collections.Generic;
 using System.Diagnostics;

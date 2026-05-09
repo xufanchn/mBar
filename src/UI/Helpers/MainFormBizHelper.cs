@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using mBar.Properties;
 using mBar.src.Core;
 using mBar.src.Core.Actions;
 using mBar.src.SystemServices;

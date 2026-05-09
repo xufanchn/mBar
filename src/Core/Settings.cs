@@ -278,6 +278,7 @@ namespace mBar
         [JsonIgnore]
         public string DisplayTaskbarLabel => !string.IsNullOrEmpty(TaskbarLabel) ? TaskbarLabel : DynamicTaskbarLabel;
 
+        public string TaskbarColumnGroup { get; set; } = "";
         public string IconKey { get; set; } = "";
 
         // ★★★ [新增] 自定义单位配置 ★★★

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LiteMonitor.Properties {
+namespace mBar.Properties {
     using System;
     
     
