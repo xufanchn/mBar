@@ -14,13 +14,13 @@
     "separatorHeightRatio": 0.6
   },
   "font": {
-    "family": "Microsoft YaHei UI",
+    "family": "Segoe UI",
     "valueFamily": "Consolas",
-    "title": 11.5,
-    "group": 10.5,
-    "item": 10.0,
-    "value": 14.0,
-    "bold": true,
+    "title": 9.0,
+    "group": 9.0,
+    "item": 9.0,
+    "value": 9.0,
+    "bold": false,
     "scale": 1.0
   },
   "color": {
